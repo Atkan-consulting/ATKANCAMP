@@ -1,4 +1,4 @@
-# ATKAN CAMP - Page de présentation
+# ATKAN CAMP 
 
 Page web officielle de présentation de l’association éducative **ATKAN CAMP**.
 
@@ -31,18 +31,6 @@ La page met en avant les parcours suivants :
 - **CAMP ESPRIT CRITIQUE ET CITOYENNETÉ**  
   Apprendre à observer, vérifier, débattre et agir en citoyen responsable.
 
-- **CAMP VACANCES**  
+- **CAMP VACANCES** ( futur  )  
   Proposer des vacances éducatives, actives et encadrées.
 
-## Fichiers du projet
-
-Le dossier doit contenir les fichiers suivants :
-
-```txt
-index.html
-4.svg
-5.svg
-6.svg
-7.svg
-8.svg
-README.md
