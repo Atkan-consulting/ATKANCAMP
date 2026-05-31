@@ -1,812 +1,149 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATKAN CAMP - Association éducative</title>
-
-  <style>
-    :root {
-      --green: #4f7f3a;
-      --green-dark: #2f5f2a;
-      --orange: #f26a1b;
-      --cream: #faf7ef;
-      --white: #ffffff;
-      --dark: #1f2a1f;
-      --text: #374137;
-      --soft: #eef4e8;
-      --shadow: 0 18px 45px rgba(31, 42, 31, 0.12);
-      --radius: 26px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(1180px, 92%);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(250, 247, 239, 0.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(79, 127, 58, 0.15);
-    }
-
-    .navbar {
-      min-height: 86px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-    }
-
-    .brand img {
-      width: 210px;
-      height: auto;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--green-dark);
-    }
-
-    nav a {
-      transition: 0.25s ease;
-    }
-
-    nav a:hover {
-      color: var(--orange);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-weight: 800;
-      background: var(--orange);
-      color: white;
-      box-shadow: 0 12px 25px rgba(242, 106, 27, 0.28);
-      transition: 0.25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 35px rgba(242, 106, 27, 0.35);
-    }
-
-    .btn-secondary {
-      background: var(--green);
-      box-shadow: 0 12px 25px rgba(79, 127, 58, 0.25);
-    }
-
-    .hero {
-      padding: 90px 0 70px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      background: rgba(242, 106, 27, 0.12);
-      border-radius: 50%;
-      top: -120px;
-      right: -140px;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      background: rgba(79, 127, 58, 0.14);
-      border-radius: 50%;
-      bottom: -130px;
-      left: -120px;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 55px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      background: var(--soft);
-      color: var(--green-dark);
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-weight: 800;
-      margin-bottom: 22px;
-      border: 1px solid rgba(79, 127, 58, 0.18);
-    }
-
-    h1 {
-      font-size: clamp(2.6rem, 6vw, 5.4rem);
-      line-height: 0.95;
-      color: var(--green-dark);
-      letter-spacing: -2px;
-      margin-bottom: 26px;
-    }
-
-    h1 span {
-      color: var(--orange);
-    }
-
-    .hero p {
-      font-size: 1.18rem;
-      max-width: 650px;
-      margin-bottom: 34px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .hero-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 34px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(79, 127, 58, 0.12);
-    }
-
-    .hero-card img {
-      width: 100%;
-      border-radius: 22px;
-      background: white;
-      padding: 20px;
-      margin-bottom: 24px;
-    }
-
-    .hero-card strong {
-      color: var(--green-dark);
-      font-size: 1.2rem;
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      max-width: 780px;
-      margin-bottom: 42px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      color: var(--green-dark);
-      line-height: 1.05;
-      margin-bottom: 16px;
-    }
-
-    .section-title h2 span {
-      color: var(--orange);
-    }
-
-    .section-title p {
-      font-size: 1.08rem;
-    }
-
-    .values {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .value-card {
-      background: white;
-      padding: 26px;
-      border-radius: 22px;
-      box-shadow: 0 10px 28px rgba(31, 42, 31, 0.08);
-      border: 1px solid rgba(79, 127, 58, 0.12);
-    }
-
-    .value-card .number {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--orange);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      margin-bottom: 16px;
-    }
-
-    .value-card h3 {
-      color: var(--green-dark);
-      margin-bottom: 8px;
-      font-size: 1.15rem;
-    }
-
-    .method {
-      background: var(--green-dark);
-      color: white;
-      border-radius: 42px;
-      padding: 56px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-    }
-
-    .method-card {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .method-card h3 {
-      color: var(--orange);
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .camps-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 26px;
-    }
-
-    .camp-card {
-      background: white;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(79, 127, 58, 0.12);
-      transition: 0.25s ease;
-    }
-
-    .camp-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .camp-logo {
-      background: white;
-      min-height: 260px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      border-bottom: 1px solid rgba(79, 127, 58, 0.12);
-    }
-
-    .camp-logo img {
-      max-height: 210px;
-      object-fit: contain;
-    }
-
-    .camp-content {
-      padding: 30px;
-    }
-
-    .camp-content h3 {
-      color: var(--green-dark);
-      font-size: 1.55rem;
-      margin-bottom: 12px;
-    }
-
-    .camp-content p {
-      margin-bottom: 18px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 8px 14px;
-      background: var(--soft);
-      color: var(--green-dark);
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.88rem;
-      margin-bottom: 14px;
-    }
-
-    .wide {
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      align-items: center;
-    }
-
-    .wide .camp-logo {
-      height: 100%;
-      border-bottom: none;
-      border-right: 1px solid rgba(79, 127, 58, 0.12);
-    }
-
-    .info-band {
-      background: white;
-      border-radius: 42px;
-      box-shadow: var(--shadow);
-      padding: 52px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 34px;
-      align-items: center;
-    }
-
-    .info-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .info-item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      font-weight: 700;
-    }
-
-    .check {
-      width: 28px;
-      height: 28px;
-      min-width: 28px;
-      border-radius: 50%;
-      background: var(--orange);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-    }
-
-    .cta {
-      background: linear-gradient(135deg, var(--green-dark), var(--green));
-      color: white;
-      border-radius: 42px;
-      padding: 70px 50px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta::before {
-      content: "";
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(242, 106, 27, 0.22);
-      top: -120px;
-      left: -100px;
-    }
-
-    .cta::after {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
-      bottom: -120px;
-      right: -90px;
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 780px;
-      margin: auto;
-    }
-
-    .cta h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.05;
-      margin-bottom: 18px;
-    }
-
-    .cta p {
-      font-size: 1.15rem;
-      margin-bottom: 30px;
-    }
-
-    footer {
-      padding: 38px 0;
-      text-align: center;
-      color: var(--green-dark);
-      font-weight: 700;
-    }
-
-    footer img {
-      width: 180px;
-      margin: 0 auto 16px;
-    }
-
-    @media (max-width: 980px) {
-      nav {
-        display: none;
-      }
-
-      .hero-grid,
-      .info-band,
-      .wide {
-        grid-template-columns: 1fr;
-      }
-
-      .values {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .method {
-        grid-template-columns: 1fr;
-        padding: 34px;
-      }
-
-      .camps-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .wide {
-        grid-column: span 1;
-      }
-
-      .wide .camp-logo {
-        border-right: none;
-        border-bottom: 1px solid rgba(79, 127, 58, 0.12);
-      }
-    }
-
-    @media (max-width: 620px) {
-      .brand img {
-        width: 170px;
-      }
-
-      .navbar {
-        min-height: 76px;
-      }
-
-      .hero {
-        padding-top: 50px;
-      }
-
-      .values {
-        grid-template-columns: 1fr;
-      }
-
-      .info-band,
-      .cta {
-        padding: 34px 24px;
-        border-radius: 28px;
-      }
-
-      .camp-logo {
-        min-height: 210px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATKAN CAMP - Association éducative à Angers</title>
+  <meta name="description" content="ATKAN CAMP, association éducative déclarée à Angers : camps, ateliers et projets pédagogiques pour apprendre autrement.">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-  <header>
-    <div class="container navbar">
-      <a href="#" class="brand">
-        <img src="8.svg" alt="Logo ATKAN CAMP - Association éducative">
-      </a>
-
-      <nav>
-        <a href="#association">Association</a>
-        <a href="#methode">Méthode</a>
-        <a href="#camps">Les camps</a>
-        <a href="#familles">Familles</a>
-        <a href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank">Demande d’information</a>
-      </nav>
-
-      <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank">
-        Je demande des infos
-      </a>
-    </div>
-  </header>
-
-  <main>
-
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Association éducative</span>
-          <h1>Apprendre autrement, <span>grandir concrètement</span>.</h1>
-          <p>
-            ATKAN CAMP propose des espaces éducatifs actifs, accessibles et structurés pour aider les jeunes à progresser,
-            prendre confiance, s’exprimer, réfléchir, coopérer et devenir plus autonomes.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank">
-              Faire une demande d’information
-            </a>
-            <a class="btn btn-secondary" href="#camps">
-              Découvrir les camps
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <img src="8.svg" alt="Logo officiel ATKAN CAMP">
-          <strong>Une association pensée pour les jeunes, les familles et les partenaires éducatifs.</strong>
-          <p>
-            Des parcours sérieux, vivants et utiles, avec une vraie progression pédagogique.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="association">
-      <div class="container">
-        <div class="section-title">
-          <h2>Une association pour <span>construire la confiance</span>.</h2>
-          <p>
-            ATKAN CAMP accompagne les enfants, adolescents et jeunes adultes dans leurs apprentissages à travers des
-            ateliers, stages, camps, séjours, projets collectifs et parcours éducatifs.
-          </p>
-        </div>
-
-        <div class="values">
-          <div class="value-card">
-            <div class="number">1</div>
-            <h3>Progression</h3>
-            <p>Chaque jeune avance à partir de son niveau réel, pas seulement selon son âge.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="number">2</div>
-            <h3>Confiance</h3>
-            <p>Le droit à l’erreur est reconnu comme une étape normale de l’apprentissage.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="number">3</div>
-            <h3>Pratique</h3>
-            <p>Les jeunes apprennent en parlant, en jouant, en créant et en expérimentant.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="number">4</div>
-            <h3>Cadre sécurisé</h3>
-            <p>Les activités sont organisées avec sérieux, respect, clarté et protection des mineurs.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="methode">
-      <div class="container">
-        <div class="section-title">
-          <h2>La méthode ATKAN CAMP : <span>simple, active, efficace</span>.</h2>
-          <p>
-            Chaque activité peut suivre trois étapes : découvrir, pratiquer, valoriser.
-            C’est carré, mais jamais scolaire au sens poussiéreux du terme.
-          </p>
-        </div>
-
-        <div class="method">
-          <div class="method-card">
-            <h3>Découvrir</h3>
-            <p>Comprendre une notion, une compétence, une règle ou une situation concrète.</p>
-          </div>
-
-          <div class="method-card">
-            <h3>Pratiquer</h3>
-            <p>Tester, parler, produire, coopérer, jouer, résoudre et s’entraîner vraiment.</p>
-          </div>
-
-          <div class="method-card">
-            <h3>Valoriser</h3>
-            <p>Présenter, restituer, mesurer les progrès et repartir avec une compétence visible.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="camps">
-      <div class="container">
-        <div class="section-title">
-          <h2>Les camps <span>ATKAN CAMP</span>.</h2>
-          <p>
-            Cinq parcours complémentaires pour développer la communication, la coopération, la confiance,
-            le discernement et l’autonomie.
-          </p>
-        </div>
-
-        <div class="camps-grid">
-
-          <article class="camp-card">
-            <div class="camp-logo">
-              <img src="7.svg" alt="Logo Camp Langues">
-            </div>
-            <div class="camp-content">
-              <span class="tag">Communication</span>
-              <h3>CAMP LANGUES</h3>
-              <p>
-                Apprendre une langue par l’oral, la pratique, les jeux, les situations concrètes et les projets.
-              </p>
-              <p>
-                Objectif : parler, comprendre, lire, écrire et utiliser la langue avec davantage de confiance.
-              </p>
-            </div>
-          </article>
-
-          <article class="camp-card">
-            <div class="camp-logo">
-              <img src="4.svg" alt="Logo Camp Éloquence">
-            </div>
-            <div class="camp-content">
-              <span class="tag">Confiance</span>
-              <h3>CAMP ÉLOQUENCE</h3>
-              <p>
-                Développer la prise de parole, la posture, la voix, l’écoute, l’argumentation et l’aisance devant un groupe.
-              </p>
-              <p>
-                Objectif : oser parler, structurer ses idées et s’exprimer avec clarté.
-              </p>
-            </div>
-          </article>
-
-          <article class="camp-card">
-            <div class="camp-logo">
-              <img src="6.svg" alt="Logo Camp Méthodologie">
-            </div>
-            <div class="camp-content">
-              <span class="tag">Autonomie</span>
-              <h3>CAMP MÉTHODOLOGIE</h3>
-              <p>
-                Apprendre à s’organiser, mémoriser, réviser, gérer son stress et devenir plus autonome.
-              </p>
-              <p>
-                Objectif : repartir avec une méthode claire, pas seulement avec de bonnes intentions.
-              </p>
-            </div>
-          </article>
-
-          <article class="camp-card">
-            <div class="camp-logo">
-              <img src="5.svg" alt="Logo Camp Esprit critique et citoyenneté">
-            </div>
-            <div class="camp-content">
-              <span class="tag">Discernement</span>
-              <h3>CAMP ESPRIT CRITIQUE ET CITOYENNETÉ</h3>
-              <p>
-                Apprendre à observer, vérifier, débattre, distinguer les faits des opinions et agir en citoyen responsable.
-              </p>
-              <p>
-                Objectif : penser par soi-même, vérifier avant de croire et débattre avec respect.
-              </p>
-            </div>
-          </article>
-
-          <article class="camp-card wide">
-            <div class="camp-logo">
-              <img src="8.svg" alt="Logo ATKAN CAMP">
-            </div>
-            <div class="camp-content">
-              <span class="tag">Coopération - À venir </span>
-              <h3>CAMP VACANCES</h3>
-              <p>
-                Proposer des vacances éducatives, actives et encadrées, mêlant loisirs, culture, sport, créativité et apprentissage.
-              </p>
-              <p>
-                Objectif : apprendre sans avoir l’impression d’être en classe, dans un cadre collectif, utile et sécurisé.
-              </p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="familles">
-      <div class="container">
-        <div class="info-band">
-          <div>
-            <div class="section-title" style="margin-bottom: 0;">
-              <h2>Un cadre clair pour les <span>familles</span>.</h2>
-              <p>
-                ATKAN CAMP associe les familles au suivi, à la progression et au bien-être des jeunes.
-                L’idée est simple : informer clairement, encadrer sérieusement et valoriser les progrès.
-              </p>
-            </div>
-          </div>
-
-          <div class="info-list">
-            <div class="info-item">
-              <div class="check">✓</div>
-              <p>Groupes adaptés selon l’âge, le niveau réel et les besoins pédagogiques.</p>
-            </div>
-
-            <div class="info-item">
-              <div class="check">✓</div>
-              <p>Suivi régulier des progrès, de l’assiduité et de la participation.</p>
-            </div>
-
-            <div class="info-item">
-              <div class="check">✓</div>
-              <p>Activités encadrées dans un climat de respect, de confiance et de sécurité.</p>
-            </div>
-
-            <div class="info-item">
-              <div class="check">✓</div>
-              <p>Valorisation finale possible : projet, restitution, attestation ou bilan.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="cta">
-          <div class="cta-content">
-            <h2>Vous voulez des informations sur ATKAN CAMP ?</h2>
-            <p>
-              Parents, bénévoles, partenaires ou structures éducatives : remplissez le formulaire.
-              L’association reviendra vers vous avec les informations adaptées.
-            </p>
-
-            <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank">
-              Accéder au formulaire de demande d’information
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="container navbar">
+    <a href="index.html" class="brand" aria-label="Accueil ATKAN CAMP">
       <img src="8.svg" alt="Logo ATKAN CAMP">
-      <p>ATKAN CAMP — Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
-    </div>
-  </footer>
+    </a>
 
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Accueil</a>
+      <a href="projet-educatif.html" >Projet éducatif</a>
+      <a href="projet-associatif.html" >Projet associatif</a>
+      <a href="camps.html" >Les camps</a>
+      <a href="contact.html" >Contact</a>
+    </nav>
+
+    <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">Demande d’information</a>
+  </div>
+</header>
+<main id="contenu">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Association éducative basée à Angers</span>
+        <h1>Apprendre autrement, <span>grandir concrètement</span>.</h1>
+        <p class="lead">
+          ATKAN CAMP propose des espaces éducatifs actifs, accessibles et structurés pour aider les jeunes à progresser,
+          prendre confiance, s’exprimer, réfléchir, coopérer et devenir plus autonomes.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">Faire une demande d’information</a>
+          <a class="btn secondary" href="camps.html">Découvrir les camps</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="8.svg" alt="Logo officiel ATKAN CAMP">
+        <strong>Une association pensée pour les jeunes, les familles et les partenaires éducatifs.</strong>
+        <p>Une pédagogie par la pratique, les projets, l’oral, la coopération et la valorisation des progrès.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="container location-band">
+      <div class="location-panel">
+        <span class="eyebrow">Ancrage territorial</span>
+        <h2>D’abord Angers, puis un rayonnement plus large.</h2>
+        <p>
+          ATKAN CAMP démarre avec un ancrage local clair à Angers. Le modèle est pensé pour pouvoir ensuite s’étendre à l’échelle régionale, puis nationale, sans perdre son cadre éducatif.
+        </p>
+      </div>
+      <div class="location-content">
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Étape 1</strong>
+            <p><b>Angers</b> : construire une base solide, identifier les familles, les besoins, les partenaires et les lieux d’accueil.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>Étape 2</strong>
+            <p><b>Échelle régionale</b> : développer des partenariats avec collectivités, structures jeunesse, associations et acteurs éducatifs.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>Étape 3</strong>
+            <p><b>Échelle nationale</b> : dupliquer les parcours, former les intervenants et sécuriser une même qualité pédagogique partout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Une pédagogie fondée sur <span>deux documents cadres</span>.</h2>
+        <p>
+          Le site sépare clairement le projet éducatif et le projet associatif pour donner aux familles, partenaires et financeurs une lecture professionnelle.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Projet éducatif</h3>
+          <p>Il fixe le cadre des actions : valeurs, objectifs, principes pédagogiques, accueil des mineurs, sécurité, relation aux familles et évaluation.</p>
+          <div class="actions"><a class="btn secondary" href="projet-educatif.html">Lire la page</a></div>
+        </article>
+
+        <article class="card">
+          <h3>Projet associatif</h3>
+          <p>Il présente la vision, la mission, les cinq piliers, l’impact attendu, les partenariats recherchés et l’évolution de l’association.</p>
+          <div class="actions"><a class="btn secondary" href="projet-associatif.html">Lire la page</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="methode">
+    <div class="container">
+      <div class="section-title">
+        <h2>La méthode ATKAN CAMP : <span>découvrir, pratiquer, valoriser</span>.</h2>
+        <p>Simple à comprendre, sérieuse à appliquer. Pas du remplissage de vacances : un vrai parcours avec une progression visible.</p>
+      </div>
+      <div class="method-band">
+        <div class="method-card">
+          <h3>Découvrir</h3>
+          <p>Comprendre une notion, une compétence, une règle ou une situation concrète.</p>
+        </div>
+        <div class="method-card">
+          <h3>Pratiquer</h3>
+          <p>Tester, parler, produire, coopérer, jouer, résoudre et s’entraîner vraiment.</p>
+        </div>
+        <div class="method-card">
+          <h3>Valoriser</h3>
+          <p>Présenter, restituer, mesurer les progrès et repartir avec une compétence visible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="container">
+      <div class="cta">
+        <div class="cta-content">
+          <h2>Parents, bénévoles, partenaires : entrons en contact.</h2>
+          <p>Une question sur les camps, les inscriptions, les partenariats ou le développement à Angers et au-delà ? Le formulaire est là.</p>
+          <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">Accéder au formulaire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <img src="8.svg" alt="Logo ATKAN CAMP">
+    <p>ATKAN CAMP — Association éducative déclarée à Angers.</p>
+    <p class="small">Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
+  </div>
+</footer>
 </body>
 </html>
