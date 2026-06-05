@@ -1,91 +1,983 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4f7f3a">
+
   <title>Les camps - ATKAN CAMP</title>
-  <meta name="description" content="ATKAN CAMP, association éducative déclarée à Angers : camps, ateliers et projets pédagogiques pour apprendre autrement.">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Découvrez les camps éducatifs d’ATKAN CAMP à Angers : langues, éloquence, méthodologie, esprit critique, citoyenneté et vacances éducatives.">
+
+  <style>
+    :root {
+      --green: #4f7f3a;
+      --green-dark: #2f5f2a;
+      --orange: #f26a1b;
+      --cream: #faf7ef;
+      --white: #ffffff;
+      --text: #374137;
+      --soft: #eef4e8;
+      --shadow: 0 18px 45px rgba(31, 42, 31, 0.12);
+      --shadow-soft: 0 10px 28px rgba(31, 42, 31, 0.08);
+      --radius: 28px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 10px;
+      left: -999px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      z-index: 9999;
+    }
+
+    .skip-link:focus {
+      left: 10px;
+    }
+
+    .site-header {
+      background: rgba(250, 247, 239, 0.96);
+      border-bottom: 1px solid rgba(79, 127, 58, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+    }
+
+    .navbar {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+    }
+
+    .brand {
+      flex-shrink: 0;
+      z-index: 1002;
+    }
+
+    .brand img {
+      width: 205px;
+      height: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: var(--green-dark);
+    }
+
+    .nav-links a {
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--orange);
+    }
+
+    .mobile-info-link {
+      display: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: var(--white);
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 12px 25px rgba(242, 106, 27, 0.28);
+      border: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(242, 106, 27, 0.35);
+    }
+
+    .btn.secondary {
+      background: var(--green);
+      box-shadow: 0 12px 25px rgba(79, 127, 58, 0.25);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(79, 127, 58, 0.18);
+      background: var(--white);
+      border-radius: 14px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      box-shadow: var(--shadow-soft);
+      z-index: 1002;
+    }
+
+    .menu-toggle span {
+      width: 22px;
+      height: 3px;
+      background: var(--green-dark);
+      border-radius: 999px;
+      transition: 0.25s ease;
+    }
+
+    .menu-toggle.is-active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(60px, 9vw, 110px) 0 clamp(56px, 8vw, 90px);
+      background:
+        radial-gradient(circle at top right, rgba(242, 106, 27, 0.16), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(79, 127, 58, 0.17), transparent 34%),
+        var(--cream);
+      text-align: left;
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(79, 127, 58, 0.11);
+      right: -120px;
+      bottom: -160px;
+    }
+
+    .page-title {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      background: var(--soft);
+      color: var(--green-dark);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 22px;
+      border: 1px solid rgba(79, 127, 58, 0.18);
+      font-size: 0.92rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      color: var(--green-dark);
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    h1 span,
+    h2 span {
+      color: var(--orange);
+    }
+
+    .page-title p {
+      max-width: 760px;
+      font-size: clamp(1.05rem, 2vw, 1.18rem);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .rubriques {
+      padding: 46px 0 10px;
+    }
+
+    .rubriques-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .rubrique-card {
+      background: var(--white);
+      border: 1px solid rgba(79, 127, 58, 0.14);
+      border-radius: 22px;
+      padding: 24px 20px;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      transition: 0.25s ease;
+    }
+
+    .rubrique-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .rubrique-card span {
+      display: block;
+      color: var(--orange);
+      font-weight: 900;
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+    }
+
+    .rubrique-card h2 {
+      color: var(--green-dark);
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .rubrique-card p {
+      font-size: 0.95rem;
+    }
+
+    .section {
+      padding: clamp(54px, 7vw, 82px) 0;
+    }
+
+    .compact {
+      padding-top: 42px;
+    }
+
+    .section-title {
+      max-width: 820px;
+      margin-bottom: 36px;
+    }
+
+    .section-title h2 {
+      color: var(--green-dark);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.05;
+      margin-bottom: 14px;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      font-size: 1.06rem;
+    }
+
+    .camps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+
+    .camp-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid rgba(79, 127, 58, 0.14);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 165px 1fr;
+      transition: 0.25s ease;
+    }
+
+    .camp-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .camp-card.wide {
+      grid-column: span 2;
+    }
+
+    .camp-logo {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .camp-logo img {
+      width: 105px;
+      height: auto;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 12px;
+      box-shadow: 0 12px 28px rgba(31, 42, 31, 0.12);
+    }
+
+    .camp-content {
+      padding: 28px;
+    }
+
+    .tag {
+      display: inline-flex;
+      background: rgba(242, 106, 27, 0.12);
+      color: var(--green-dark);
+      border: 1px solid rgba(242, 106, 27, 0.22);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .camp-content h3 {
+      color: var(--green-dark);
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+      line-height: 1.18;
+    }
+
+    .camp-content p {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .camp-content b {
+      color: var(--green-dark);
+    }
+
+    .camp-details {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .detail-item {
+      background: var(--soft);
+      border-left: 5px solid var(--orange);
+      padding: 13px 15px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+    }
+
+    .detail-item strong {
+      color: var(--green-dark);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      color: var(--white);
+      border-radius: 30px;
+      padding: clamp(30px, 5vw, 48px);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .cta p {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .site-footer {
+      padding: 38px 0;
+      text-align: center;
+      color: var(--green-dark);
+      font-weight: 800;
+    }
+
+    .site-footer img {
+      width: 180px;
+      margin: 0 auto 16px;
+    }
+
+    .site-footer .small {
+      font-size: 0.92rem;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 1060px) {
+      .nav-links {
+        gap: 14px;
+        font-size: 0.88rem;
+      }
+
+      .brand img {
+        width: 180px;
+      }
+
+      .rubriques-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 920px) {
+      .container {
+        width: min(100% - 32px, var(--max-width));
+      }
+
+      .navbar {
+        min-height: 76px;
+      }
+
+      .brand img {
+        width: 160px;
+      }
+
+      .navbar > .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 76px;
+        left: 16px;
+        right: 16px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid rgba(79, 127, 58, 0.16);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        transform: translateY(-18px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: 0.25s ease;
+        z-index: 1001;
+      }
+
+      .nav-links.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 16px;
+        background: var(--soft);
+        border-radius: 14px;
+        color: var(--green-dark);
+        font-weight: 900;
+      }
+
+      .nav-links a:hover,
+      .nav-links a[aria-current="page"] {
+        background: rgba(242, 106, 27, 0.12);
+        color: var(--orange);
+      }
+
+      .mobile-info-link {
+        display: block;
+        background: var(--orange) !important;
+        color: var(--white) !important;
+        text-align: center;
+        box-shadow: 0 12px 25px rgba(242, 106, 27, 0.22);
+      }
+
+      .page-hero {
+        padding: 64px 0 54px;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 8vw, 4rem);
+        line-height: 1;
+        letter-spacing: -1.2px;
+      }
+
+      .camps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .camp-card,
+      .camp-card.wide {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        line-height: 1.65;
+      }
+
+      .container {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      .navbar {
+        min-height: 70px;
+      }
+
+      .brand img {
+        width: 140px;
+      }
+
+      .menu-toggle {
+        width: 42px;
+        height: 42px;
+      }
+
+      .nav-links {
+        top: 70px;
+        left: 12px;
+        right: 12px;
+        border-radius: 22px;
+      }
+
+      .page-hero {
+        padding: 48px 0 42px;
+      }
+
+      .page-hero::after {
+        width: 220px;
+        height: 220px;
+        right: -100px;
+        bottom: -110px;
+      }
+
+      .eyebrow {
+        font-size: 0.78rem;
+        padding: 7px 13px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 11vw, 3.1rem);
+        line-height: 1.02;
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+      }
+
+      .page-title p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 48px;
+        padding: 13px 18px;
+        font-size: 0.95rem;
+      }
+
+      .rubriques {
+        padding: 34px 0 0;
+      }
+
+      .rubriques-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rubrique-card {
+        padding: 22px;
+      }
+
+      .section {
+        padding: 44px 0;
+      }
+
+      .section-title h2 {
+        font-size: clamp(1.75rem, 8vw, 2.35rem);
+      }
+
+      .camp-card {
+        grid-template-columns: 1fr;
+        border-radius: 24px;
+      }
+
+      .camp-logo {
+        min-height: 150px;
+      }
+
+      .camp-logo img {
+        width: 94px;
+      }
+
+      .camp-content {
+        padding: 22px;
+      }
+
+      .camp-content h3 {
+        font-size: 1.22rem;
+      }
+
+      .detail-item {
+        font-size: 0.92rem;
+      }
+
+      .cta {
+        padding: 28px 22px;
+        border-radius: 24px;
+      }
+
+      .site-footer {
+        padding: 30px 0;
+      }
+
+      .site-footer img {
+        width: 135px;
+      }
+
+      .site-footer p {
+        font-size: 0.92rem;
+      }
+
+      .site-footer .small {
+        font-size: 0.84rem;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .container {
+        width: min(100% - 20px, var(--max-width));
+      }
+
+      .brand img {
+        width: 125px;
+      }
+
+      h1 {
+        font-size: 1.95rem;
+      }
+
+      .camp-content {
+        padding: 20px;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
+
 <a class="skip-link" href="#contenu">Aller au contenu</a>
+
 <header class="site-header">
   <div class="container navbar">
+
     <a href="index.html" class="brand" aria-label="Accueil ATKAN CAMP">
       <img src="8.svg" alt="Logo ATKAN CAMP">
     </a>
 
-    <nav class="nav-links" aria-label="Navigation principale">
-      <a href="index.html" >Accueil</a>
-      <a href="projet-educatif.html" >Projet éducatif</a>
-      <a href="projet-associatif.html" >Projet associatif</a>
+    <nav class="nav-links" id="mobileMenu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="projet-educatif.html">Projet éducatif</a>
+      <a href="projet-associatif.html">Projet associatif</a>
       <a href="camps.html" aria-current="page">Les camps</a>
-      <a href="contact.html" >Contact</a>
+      <a href="contact.html">Contact</a>
+      <a class="mobile-info-link" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+        Demande d’information
+      </a>
     </nav>
 
-    <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">Demande d’information</a>
+    <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+      Demande d’information
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </div>
 </header>
+
 <main id="contenu">
+
   <section class="page-hero">
     <div class="container page-title">
-      <span class="eyebrow">Les parcours ATKAN CAMP</span>
-      <h1>Cinq camps pour <span>apprendre autrement</span></h1>
-      <p>Chaque camp possède sa promesse, son objectif, son public et ses modalités pédagogiques.</p>
+      <span class="eyebrow">ATKAN CAMP • Parcours éducatifs</span>
+      <h1>Cinq camps pour <span>apprendre autrement</span>.</h1>
+      <p>
+        Des parcours complémentaires pour aider les enfants et les jeunes à parler, réfléchir,
+        s’organiser, coopérer, créer et progresser avec confiance.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#camps">Découvrir les camps</a>
+        <a class="btn secondary" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+          Demande d’information
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="section compact">
-    <div class="container camps-grid">
-      <article class="camp-card">
-        <div class="camp-logo"><img src="7.svg" alt="Logo Camp Langues"></div>
-        <div class="camp-content">
-          <span class="tag">Communication</span>
-          <h3>CAMP LANGUES</h3>
-          <p>Apprendre une langue par l’oral, la pratique, les jeux, les situations concrètes et les projets.</p>
-          <p><b>Objectif :</b> parler, comprendre, lire, écrire et utiliser la langue avec davantage de confiance.</p>
-        </div>
+  <section class="rubriques">
+    <div class="container rubriques-grid">
+
+      <article class="rubrique-card">
+        <span>01</span>
+        <h2>Apprendre autrement</h2>
+        <p>Des activités concrètes, orales, visuelles et participatives.</p>
       </article>
 
-      <article class="camp-card">
-        <div class="camp-logo"><img src="4.svg" alt="Logo Camp Éloquence"></div>
-        <div class="camp-content">
-          <span class="tag">Confiance</span>
-          <h3>CAMP ÉLOQUENCE</h3>
-          <p>Développer la prise de parole, la posture, la voix, l’écoute, l’argumentation et l’aisance devant un groupe.</p>
-          <p><b>Objectif :</b> oser parler, structurer ses idées et s’exprimer avec clarté.</p>
-        </div>
+      <article class="rubrique-card">
+        <span>02</span>
+        <h2>Gagner en confiance</h2>
+        <p>Un cadre bienveillant pour progresser sans pression inutile.</p>
       </article>
 
-      <article class="camp-card">
-        <div class="camp-logo"><img src="6.svg" alt="Logo Camp Méthodologie"></div>
-        <div class="camp-content">
-          <span class="tag">Autonomie</span>
-          <h3>CAMP MÉTHODOLOGIE</h3>
-          <p>Apprendre à s’organiser, mémoriser, réviser, gérer son stress et devenir plus autonome.</p>
-          <p><b>Objectif :</b> repartir avec une méthode claire et applicable.</p>
-        </div>
+      <article class="rubrique-card">
+        <span>03</span>
+        <h2>Développer l’autonomie</h2>
+        <p>Des méthodes simples pour mieux apprendre et s’organiser.</p>
       </article>
 
-      <article class="camp-card">
-        <div class="camp-logo"><img src="5.svg" alt="Logo Camp Esprit critique et citoyenneté"></div>
-        <div class="camp-content">
-          <span class="tag">Discernement</span>
-          <h3>CAMP ESPRIT CRITIQUE ET CITOYENNETÉ</h3>
-          <p>Apprendre à observer, vérifier, débattre, distinguer les faits des opinions et agir en citoyen responsable.</p>
-          <p><b>Objectif :</b> penser par soi-même, vérifier avant de croire et débattre avec respect.</p>
-        </div>
+      <article class="rubrique-card">
+        <span>04</span>
+        <h2>Grandir concrètement</h2>
+        <p>Des compétences utiles à l’école, en société et dans la vie.</p>
       </article>
 
-      <article class="camp-card wide">
-        <div class="camp-logo"><img src="8.svg" alt="Logo ATKAN CAMP"></div>
-        <div class="camp-content">
-          <span class="tag">Coopération- À venir</span>
-          <h3>CAMP VACANCES</h3>
-          <p>Proposer des vacances éducatives, actives et encadrées, mêlant loisirs, culture, sport, créativité et apprentissage.</p>
-          <p><b>Objectif :</b> apprendre sans avoir l’impression d’être en classe, dans un cadre collectif, utile et sécurisé.</p>
-        </div>
-      </article>
+    </div>
+  </section>
+
+  <section class="section compact" id="camps">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Nos camps <span>pédagogiques</span>.</h2>
+        <p>
+          ATKAN CAMP propose plusieurs parcours complémentaires pour accompagner les enfants et les jeunes dans leur progression.
+        </p>
+      </div>
+
+      <div class="camps-grid">
+
+        <article class="camp-card">
+          <div class="camp-logo">
+            <img src="7.svg" alt="Logo Camp Langues">
+          </div>
+
+          <div class="camp-content">
+            <span class="tag">Communication</span>
+            <h3>CAMP LANGUES</h3>
+
+            <p>
+              Apprendre une langue par l’oral, la pratique, les jeux, les situations concrètes et les projets.
+            </p>
+
+            <p>
+              <b>Objectif :</b> parler, comprendre, lire, écrire et utiliser la langue avec davantage de confiance.
+            </p>
+
+            <div class="camp-details">
+              <div class="detail-item">
+                <strong>Public :</strong> enfants et jeunes selon niveau.
+              </div>
+              <div class="detail-item">
+                <strong>Approche :</strong> oral, pratique, jeux, projets et mise en situation.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-logo">
+            <img src="4.svg" alt="Logo Camp Éloquence">
+          </div>
+
+          <div class="camp-content">
+            <span class="tag">Confiance</span>
+            <h3>CAMP ÉLOQUENCE</h3>
+
+            <p>
+              Développer la prise de parole, la posture, la voix, l’écoute, l’argumentation et l’aisance devant un groupe.
+            </p>
+
+            <p>
+              <b>Objectif :</b> oser parler, structurer ses idées et s’exprimer avec clarté.
+            </p>
+
+            <div class="camp-details">
+              <div class="detail-item">
+                <strong>Public :</strong> jeunes souhaitant gagner en aisance orale.
+              </div>
+              <div class="detail-item">
+                <strong>Approche :</strong> expression orale, débats, jeux de rôle et présentations.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-logo">
+            <img src="6.svg" alt="Logo Camp Méthodologie">
+          </div>
+
+          <div class="camp-content">
+            <span class="tag">Autonomie</span>
+            <h3>CAMP MÉTHODOLOGIE</h3>
+
+            <p>
+              Apprendre à s’organiser, mémoriser, réviser, gérer son stress et devenir plus autonome.
+            </p>
+
+            <p>
+              <b>Objectif :</b> repartir avec une méthode claire, simple et applicable.
+            </p>
+
+            <div class="camp-details">
+              <div class="detail-item">
+                <strong>Public :</strong> élèves qui veulent mieux travailler et mieux réviser.
+              </div>
+              <div class="detail-item">
+                <strong>Approche :</strong> organisation, mémorisation, concentration et gestion du temps.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-logo">
+            <img src="5.svg" alt="Logo Camp Esprit critique et citoyenneté">
+          </div>
+
+          <div class="camp-content">
+            <span class="tag">Discernement</span>
+            <h3>CAMP ESPRIT CRITIQUE ET CITOYENNETÉ</h3>
+
+            <p>
+              Apprendre à observer, vérifier, débattre, distinguer les faits des opinions et agir en citoyen responsable.
+            </p>
+
+            <p>
+              <b>Objectif :</b> penser par soi-même, vérifier avant de croire et débattre avec respect.
+            </p>
+
+            <div class="camp-details">
+              <div class="detail-item">
+                <strong>Public :</strong> jeunes curieux, citoyens en construction.
+              </div>
+              <div class="detail-item">
+                <strong>Approche :</strong> débats, analyse d’informations, situations concrètes et argumentation.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="camp-card wide">
+          <div class="camp-logo">
+            <img src="8.svg" alt="Logo ATKAN CAMP">
+          </div>
+
+          <div class="camp-content">
+            <span class="tag">Coopération — À venir</span>
+            <h3>CAMP VACANCES</h3>
+
+            <p>
+              Proposer des vacances éducatives, actives et encadrées, mêlant loisirs, culture, sport, créativité et apprentissage.
+            </p>
+
+            <p>
+              <b>Objectif :</b> apprendre sans avoir l’impression d’être en classe, dans un cadre collectif, utile et sécurisé.
+            </p>
+
+            <div class="camp-details">
+              <div class="detail-item">
+                <strong>Public :</strong> enfants et jeunes pendant les périodes de vacances.
+              </div>
+              <div class="detail-item">
+                <strong>Approche :</strong> activités éducatives, projets collectifs, loisirs et découverte.
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
@@ -94,13 +986,19 @@
       <div class="cta">
         <div class="cta-content">
           <h2>Un camp vous intéresse ?</h2>
-          <p>Remplissez le formulaire et indiquez le camp concerné. L’association reviendra vers vous avec les informations adaptées.</p>
-          <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">Faire une demande</a>
+          <p>
+            Remplissez le formulaire et indiquez le camp concerné. L’association reviendra vers vous avec les informations adaptées.
+          </p>
+          <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+            Faire une demande
+          </a>
         </div>
       </div>
     </div>
   </section>
+
 </main>
+
 <footer class="site-footer">
   <div class="container">
     <img src="8.svg" alt="Logo ATKAN CAMP">
@@ -108,5 +1006,30 @@
     <p class="small">Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
   </div>
 </footer>
+
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector("#mobileMenu");
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("is-open");
+
+      menuToggle.classList.toggle("is-active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("is-open");
+        menuToggle.classList.remove("is-active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("menu-open");
+      });
+    });
+  }
+</script>
+
 </body>
 </html>
