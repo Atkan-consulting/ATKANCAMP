@@ -1,109 +1,1027 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4f7f3a">
+
   <title>Projet éducatif - ATKAN CAMP</title>
-  <meta name="description" content="ATKAN CAMP, association éducative déclarée à Angers : camps, ateliers et projets pédagogiques pour apprendre autrement.">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Découvrez le projet éducatif d’ATKAN CAMP, association éducative déclarée à Angers : valeurs, pédagogie, sécurité, familles et progression des jeunes.">
+
+  <style>
+    :root {
+      --green: #4f7f3a;
+      --green-dark: #2f5f2a;
+      --orange: #f26a1b;
+      --cream: #faf7ef;
+      --white: #ffffff;
+      --text: #374137;
+      --soft: #eef4e8;
+      --shadow: 0 18px 45px rgba(31, 42, 31, 0.12);
+      --shadow-soft: 0 10px 28px rgba(31, 42, 31, 0.08);
+      --radius: 28px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 10px;
+      left: -999px;
+      background: var(--orange);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      z-index: 9999;
+    }
+
+    .skip-link:focus {
+      left: 10px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250, 247, 239, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(79, 127, 58, 0.15);
+    }
+
+    .navbar {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      width: 205px;
+      height: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: var(--green-dark);
+    }
+
+    .nav-links a {
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: white;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 12px 25px rgba(242, 106, 27, 0.28);
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(242, 106, 27, 0.35);
+    }
+
+    .btn.secondary {
+      background: var(--green);
+      box-shadow: 0 12px 25px rgba(79, 127, 58, 0.25);
+    }
+
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(60px, 9vw, 110px) 0 clamp(56px, 8vw, 90px);
+      background:
+        radial-gradient(circle at top right, rgba(242, 106, 27, 0.14), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(79, 127, 58, 0.15), transparent 34%),
+        var(--cream);
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(79, 127, 58, 0.11);
+      right: -120px;
+      bottom: -160px;
+    }
+
+    .page-title {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      background: var(--soft);
+      color: var(--green-dark);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 22px;
+      border: 1px solid rgba(79, 127, 58, 0.18);
+      font-size: 0.92rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      color: var(--green-dark);
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    h1 span,
+    h2 span {
+      color: var(--orange);
+    }
+
+    .page-title p {
+      max-width: 780px;
+      font-size: clamp(1.05rem, 2vw, 1.18rem);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .section {
+      padding: clamp(54px, 7vw, 82px) 0;
+    }
+
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .side-nav {
+      position: sticky;
+      top: 112px;
+      background: white;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(79, 127, 58, 0.13);
+    }
+
+    .side-nav strong {
+      display: block;
+      color: var(--green-dark);
+      margin-bottom: 14px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .side-nav a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: var(--green-dark);
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .side-nav a:hover {
+      background: var(--soft);
+      color: var(--orange);
+      padding-left: 18px;
+    }
+
+    .doc-content {
+      display: grid;
+      gap: 30px;
+    }
+
+    .doc-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: clamp(28px, 4vw, 42px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(79, 127, 58, 0.12);
+    }
+
+    .doc-section h2 {
+      color: var(--green-dark);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+      letter-spacing: -0.6px;
+    }
+
+    .doc-section p {
+      margin-bottom: 16px;
+      font-size: 1.04rem;
+    }
+
+    .quote {
+      margin-top: 24px;
+      padding: 24px;
+      border-left: 6px solid var(--orange);
+      border-radius: 18px;
+      background: linear-gradient(90deg, rgba(242, 106, 27, 0.12), rgba(79, 127, 58, 0.06));
+      color: var(--green-dark);
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .value-card,
+    .info-card,
+    .security-card {
+      background: var(--soft);
+      border-radius: 22px;
+      padding: 24px;
+      border: 1px solid rgba(79, 127, 58, 0.14);
+      transition: 0.25s ease;
+    }
+
+    .value-card:hover,
+    .info-card:hover,
+    .security-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .value-card strong {
+      display: block;
+      color: var(--orange);
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .info-card h3 {
+      color: var(--green-dark);
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--green-dark);
+      font-weight: 900;
+      border: 1px solid rgba(79, 127, 58, 0.14);
+    }
+
+    .axis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .axis-card {
+      background: var(--soft);
+      border-radius: 22px;
+      padding: 24px;
+      border-left: 6px solid var(--orange);
+    }
+
+    .axis-card h3 {
+      color: var(--green-dark);
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .security-card strong {
+      display: block;
+      color: var(--orange);
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .check-list li {
+      background: var(--soft);
+      border-radius: 16px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--orange);
+      font-weight: 700;
+    }
+
+    .cta {
+      margin-top: 30px;
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      color: white;
+      border-radius: 30px;
+      padding: clamp(28px, 4vw, 38px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 0;
+    }
+
+    .site-footer {
+      padding: 38px 0;
+      text-align: center;
+      color: var(--green-dark);
+      font-weight: 800;
+    }
+
+    .site-footer img {
+      width: 180px;
+      margin: 0 auto 16px;
+    }
+
+    .small {
+      font-size: 0.92rem;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 1060px) {
+      .nav-links {
+        gap: 14px;
+        font-size: 0.88rem;
+      }
+
+      .brand img {
+        width: 180px;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .container {
+        width: min(100% - 32px, 1180px);
+      }
+
+      .navbar {
+        min-height: 76px;
+      }
+
+      .brand img {
+        width: 160px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .navbar .btn {
+        display: none;
+      }
+
+      .page-hero {
+        padding: 64px 0 54px;
+      }
+
+      .page-title {
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 8vw, 4rem);
+        line-height: 1;
+        letter-spacing: -1.2px;
+      }
+
+      .page-title p {
+        font-size: 1.05rem;
+      }
+
+      .doc-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .side-nav {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 18px;
+      }
+
+      .side-nav strong {
+        grid-column: 1 / -1;
+      }
+
+      .side-nav a {
+        background: var(--soft);
+        padding: 12px;
+        text-align: center;
+      }
+
+      .value-grid,
+      .grid-3,
+      .axis-grid,
+      .security-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .doc-section {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        line-height: 1.65;
+      }
+
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .site-header {
+        position: sticky;
+      }
+
+      .navbar {
+        min-height: 70px;
+      }
+
+      .brand img {
+        width: 140px;
+      }
+
+      .page-hero {
+        padding: 48px 0 42px;
+      }
+
+      .page-hero::after {
+        width: 220px;
+        height: 220px;
+        right: -100px;
+        bottom: -110px;
+      }
+
+      .eyebrow {
+        font-size: 0.78rem;
+        padding: 7px 13px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 11vw, 3.1rem);
+        line-height: 1.02;
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+      }
+
+      .page-title p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 48px;
+        padding: 13px 18px;
+        font-size: 0.95rem;
+      }
+
+      .section {
+        padding: 42px 0;
+      }
+
+      .doc-layout {
+        gap: 20px;
+      }
+
+      .side-nav {
+        grid-template-columns: 1fr;
+        border-radius: 20px;
+        padding: 16px;
+      }
+
+      .side-nav strong {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .side-nav a {
+        font-size: 0.92rem;
+        padding: 11px 12px;
+        text-align: left;
+      }
+
+      .doc-content {
+        gap: 22px;
+      }
+
+      .doc-section {
+        padding: 22px;
+        border-radius: 22px;
+      }
+
+      .doc-section h2 {
+        font-size: clamp(1.55rem, 8vw, 2.2rem);
+        line-height: 1.12;
+        margin-bottom: 14px;
+      }
+
+      .doc-section p {
+        font-size: 0.98rem;
+        margin-bottom: 14px;
+      }
+
+      .quote {
+        padding: 18px;
+        font-size: 1.08rem;
+        border-left-width: 5px;
+        border-radius: 16px;
+      }
+
+      .value-grid,
+      .grid-3,
+      .axis-grid,
+      .security-grid {
+        gap: 14px;
+      }
+
+      .value-card,
+      .info-card,
+      .security-card,
+      .axis-card {
+        padding: 20px;
+        border-radius: 18px;
+      }
+
+      .value-card strong,
+      .security-card strong {
+        font-size: 1.08rem;
+      }
+
+      .info-card h3,
+      .axis-card h3 {
+        font-size: 1.15rem;
+      }
+
+      .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
+
+      .pill-row {
+        gap: 10px;
+      }
+
+      .pill {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 11px 14px;
+        font-size: 0.92rem;
+      }
+
+      .check-list {
+        gap: 10px;
+      }
+
+      .check-list li {
+        padding: 14px 15px;
+        font-size: 0.95rem;
+      }
+
+      .cta {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 24px;
+        border-radius: 22px;
+        gap: 18px;
+      }
+
+      .cta h2 {
+        font-size: clamp(1.45rem, 7vw, 2rem);
+      }
+
+      .cta p {
+        font-size: 0.98rem;
+      }
+
+      .site-footer {
+        padding: 30px 0;
+      }
+
+      .site-footer img {
+        width: 135px;
+      }
+
+      .site-footer p {
+        font-size: 0.92rem;
+      }
+
+      .small {
+        font-size: 0.84rem;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .container {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .brand img {
+        width: 125px;
+      }
+
+      h1 {
+        font-size: 1.95rem;
+      }
+
+      .doc-section {
+        padding: 20px;
+      }
+
+      .doc-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<a class="skip-link" href="#contenu">Aller au contenu</a>
-<header class="site-header">
-  <div class="container navbar">
-    <a href="index.html" class="brand" aria-label="Accueil ATKAN CAMP">
-      <img src="8.svg" alt="Logo ATKAN CAMP">
-    </a>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <nav class="nav-links" aria-label="Navigation principale">
-      <a href="index.html" >Accueil</a>
-      <a href="projet-educatif.html" aria-current="page">Projet éducatif</a>
-      <a href="projet-associatif.html" >Projet associatif</a>
-      <a href="camps.html" >Les camps</a>
-      <a href="contact.html" >Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand" aria-label="Accueil ATKAN CAMP">
+        <img src="8.svg" alt="Logo ATKAN CAMP">
+      </a>
 
-    <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">Demande d’information</a>
-  </div>
-</header>
-<main id="contenu">
-  <section class="page-hero">
-    <div class="container page-title">
-      <span class="eyebrow">ATKAN CAMP</span>
-      <h1>Projet éducatif <span>ATKAN CAMP</span></h1>
-      <p>Le cadre de référence des actions éducatives : valeurs, objectifs, pédagogie, sécurité, relation avec les familles et amélioration continue.</p>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="projet-educatif.html" aria-current="page">Projet éducatif</a>
+        <a href="projet-associatif.html">Projet associatif</a>
+        <a href="camps.html">Les camps</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+        Demande d’information
+      </a>
     </div>
-  </section>
+  </header>
 
-  <section class="section compact">
-    <div class="container doc-layout">
-      <aside class="side-nav" aria-label="Sommaire projet éducatif">
-        <a href="#cadre">Cadre général</a>
-        <a href="#finalite">Finalité</a>
-        <a href="#pedagogie">Principes pédagogiques</a>
-        <a href="#axes">Axes éducatifs</a>
-        <a href="#securite">Sécurité et familles</a>
-      </aside>
+  <main id="contenu">
+    <section class="page-hero">
+      <div class="container page-title">
+        <span class="eyebrow">ATKAN CAMP • Projet éducatif</span>
+        <h1>Un cadre éducatif pour <span>apprendre autrement et grandir avec confiance</span>.</h1>
+        <p>
+          Le projet éducatif fixe le cadre de référence des actions ATKAN CAMP :
+          valeurs, objectifs, pédagogie active, sécurité, relation avec les familles et amélioration continue.
+        </p>
 
-      <div class="doc-content">
-        <section class="doc-section" id="cadre">
-          <h2>Cadre général</h2>
-          <p>Le projet éducatif définit les valeurs, objectifs, principes pédagogiques, modalités d’accueil, engagements éducatifs et règles générales des activités ATKAN CAMP.</p>
-          <p>Il concerne les ateliers, stages, camps, mini-camps, séjours, sorties pédagogiques, activités linguistiques, culturelles, sportives, citoyennes, méthodologiques et projets collectifs.</p>
-          <div class="quote">Un document clair pour les familles, bénévoles, salariés, intervenants, partenaires et financeurs.</div>
-        </section>
-
-        <section class="doc-section" id="finalite">
-          <h2>Finalité éducative</h2>
-          <p>ATKAN CAMP veut proposer aux jeunes des espaces éducatifs actifs, accessibles, sécurisés et structurés.</p>
-          <ul>
-            <li>Apprendre autrement et progresser par la pratique.</li>
-            <li>Développer la confiance, l’expression et l’autonomie.</li>
-            <li>Renforcer l’esprit critique, la coopération et l’ouverture culturelle.</li>
-            <li>Repartir avec des compétences utiles, pas seulement avec une activité consommée.</li>
-          </ul>
-        </section>
-
-        <section class="doc-section" id="pedagogie">
-          <h2>Principes pédagogiques</h2>
-          <p>La pédagogie repose sur une logique active, progressive et concrète : pratique régulière, mises en situation, jeu éducatif, oral, expérimentation, coopération, projets, défis collectifs et productions finales.</p>
-          <div class="grid-3">
-            <div class="info-card"><span class="step-number">1</span><h3>Découvrir</h3><p>Comprendre une notion, une règle, une compétence ou une situation.</p></div>
-            <div class="info-card"><span class="step-number">2</span><h3>Pratiquer</h3><p>Tester, parler, jouer, produire, coopérer ou résoudre un problème.</p></div>
-            <div class="info-card"><span class="step-number">3</span><h3>Valoriser</h3><p>Présenter, restituer, expliquer, partager ou mesurer les progrès.</p></div>
-          </div>
-        </section>
-
-        <section class="doc-section" id="axes">
-          <h2>Les cinq axes éducatifs</h2>
-          <div class="pill-row">
-            <span class="pill">Langues et ouverture culturelle</span>
-            <span class="pill">Vacances éducatives</span>
-            <span class="pill">Expression orale</span>
-            <span class="pill">Citoyenneté et esprit critique</span>
-            <span class="pill">Méthodologie et autonomie</span>
-          </div>
-        </section>
-
-        <section class="doc-section" id="securite">
-          <h2>Sécurité, familles et amélioration continue</h2>
-          <p>L’association accorde une attention particulière à l’accueil des mineurs, à l’information des familles, à la sécurité physique, morale et affective, à l’inclusion et à l’évaluation des actions.</p>
-          <ul>
-            <li>Information claire des familles et autorisations nécessaires.</li>
-            <li>Protection contre violences, humiliations, discriminations et harcèlement.</li>
-            <li>Suivi de la participation, de l’assiduité, de la progression et de la satisfaction.</li>
-          </ul>
-        </section>
+        <div class="hero-actions">
+          <a class="btn" href="#cadre">Découvrir le cadre éducatif</a>
+          <a class="btn secondary" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+            Demande d’information
+          </a>
+        </div>
       </div>
+    </section>
+
+    <section class="section">
+      <div class="container doc-layout">
+        <aside class="side-nav" aria-label="Sommaire projet éducatif">
+          <strong>Sommaire</strong>
+          <a href="#cadre">Cadre général</a>
+          <a href="#finalite">Finalité éducative</a>
+          <a href="#valeurs">Valeurs</a>
+          <a href="#pedagogie">Pédagogie</a>
+          <a href="#axes">Axes éducatifs</a>
+          <a href="#securite">Sécurité et familles</a>
+        </aside>
+
+        <div class="doc-content">
+          <section class="doc-section" id="cadre">
+            <h2>Un cadre général <span>clair et structurant</span>.</h2>
+            <p>
+              Le projet éducatif définit les valeurs, les objectifs, les principes pédagogiques, les modalités d’accueil,
+              les engagements éducatifs et les règles générales applicables aux activités ATKAN CAMP.
+            </p>
+            <p>
+              Il concerne les ateliers, stages, camps, mini-camps, séjours, sorties pédagogiques, activités linguistiques,
+              culturelles, sportives, citoyennes, méthodologiques et projets collectifs.
+            </p>
+            <div class="quote">
+              Un document clair pour les familles, bénévoles, salariés, intervenants, partenaires et financeurs.
+            </div>
+          </section>
+
+          <section class="doc-section" id="finalite">
+            <h2>Une finalité éducative : <span>faire progresser chaque jeune</span>.</h2>
+            <p>
+              ATKAN CAMP veut proposer aux jeunes des espaces éducatifs actifs, accessibles, sécurisés et structurés.
+              L’objectif n’est pas seulement d’occuper les jeunes, mais de leur permettre de repartir avec des compétences utiles.
+            </p>
+
+            <ul class="check-list">
+              <li>Apprendre autrement et progresser par la pratique.</li>
+              <li>Développer la confiance, l’expression et l’autonomie.</li>
+              <li>Renforcer l’esprit critique, la coopération et l’ouverture culturelle.</li>
+              <li>Vivre des expériences positives, utiles et valorisantes.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="valeurs">
+            <h2>Des valeurs éducatives <span>exigeantes et humaines</span>.</h2>
+            <p>
+              Les valeurs d’ATKAN CAMP guident l’organisation des activités, le choix des intervenants,
+              la relation avec les familles et la construction des projets pédagogiques.
+            </p>
+
+            <div class="value-grid">
+              <div class="value-card">
+                <strong>Respect</strong>
+                <p>Respecter les personnes, les règles, les lieux, les différences et la parole de chacun.</p>
+              </div>
+
+              <div class="value-card">
+                <strong>Confiance</strong>
+                <p>Permettre aux jeunes d’oser, d’essayer, de se tromper et de progresser.</p>
+              </div>
+
+              <div class="value-card">
+                <strong>Autonomie</strong>
+                <p>Aider les jeunes à devenir acteurs de leurs apprentissages et de leurs choix.</p>
+              </div>
+
+              <div class="value-card">
+                <strong>Esprit critique</strong>
+                <p>Apprendre à observer, vérifier, comparer, questionner et argumenter.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="pedagogie">
+            <h2>Une pédagogie active : <span>comprendre, pratiquer, valoriser</span>.</h2>
+            <p>
+              La pédagogie repose sur une logique active, progressive et concrète :
+              pratique régulière, mises en situation, jeu éducatif, oral, expérimentation, coopération,
+              projets, défis collectifs et productions finales.
+            </p>
+
+            <div class="grid-3">
+              <div class="info-card">
+                <span class="step-number">1</span>
+                <h3>Comprendre</h3>
+                <p>Découvrir une notion, une règle, une compétence ou une situation concrète.</p>
+              </div>
+
+              <div class="info-card">
+                <span class="step-number">2</span>
+                <h3>Pratiquer</h3>
+                <p>Tester, parler, jouer, produire, coopérer ou résoudre un problème.</p>
+              </div>
+
+              <div class="info-card">
+                <span class="step-number">3</span>
+                <h3>Valoriser</h3>
+                <p>Présenter, restituer, expliquer, partager ou mesurer les progrès.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="axes">
+            <h2>Cinq axes éducatifs pour <span>répondre aux besoins réels des jeunes</span>.</h2>
+            <p>
+              ATKAN CAMP organise ses actions autour de cinq axes complémentaires, afin de travailler les langues,
+              l’expression, la réflexion, la coopération, la méthodologie et l’autonomie.
+            </p>
+
+            <div class="pill-row">
+              <span class="pill">Langues et ouverture culturelle</span>
+              <span class="pill">Vacances éducatives</span>
+              <span class="pill">Expression orale</span>
+              <span class="pill">Citoyenneté et esprit critique</span>
+              <span class="pill">Méthodologie et autonomie</span>
+            </div>
+
+            <div class="axis-grid">
+              <div class="axis-card">
+                <h3>CAMP LANGUES</h3>
+                <p>Développer la communication, l’oral, la compréhension, la lecture, l’écriture et la découverte culturelle.</p>
+              </div>
+
+              <div class="axis-card">
+                <h3>CAMP VACANCES</h3>
+                <p>Proposer des vacances utiles, actives, encadrées, créatives et éducatives.</p>
+              </div>
+
+              <div class="axis-card">
+                <h3>CAMP ÉLOQUENCE</h3>
+                <p>Développer la prise de parole, la confiance, la posture, la voix, l’écoute et l’argumentation.</p>
+              </div>
+
+              <div class="axis-card">
+                <h3>CAMP CITOYENNETÉ ET ESPRIT CRITIQUE</h3>
+                <p>Apprendre à vérifier, débattre, distinguer les faits des opinions et agir en citoyen responsable.</p>
+              </div>
+
+              <div class="axis-card">
+                <h3>CAMP MÉTHODOLOGIE</h3>
+                <p>Aider les jeunes à s’organiser, mémoriser, réviser, gérer leur stress et devenir autonomes.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="securite">
+            <h2>Sécurité, familles et amélioration continue : <span>un cadre responsable</span>.</h2>
+            <p>
+              L’association accorde une attention particulière à l’accueil des mineurs, à l’information des familles,
+              à la sécurité physique, morale et affective, à l’inclusion et à l’évaluation des actions.
+            </p>
+
+            <div class="security-grid">
+              <div class="security-card">
+                <strong>Protection des mineurs</strong>
+                <p>Prévenir les violences, humiliations, discriminations, harcèlements et comportements dangereux.</p>
+              </div>
+
+              <div class="security-card">
+                <strong>Relation familles</strong>
+                <p>Informer clairement, expliquer les objectifs, signaler les difficultés importantes et valoriser les progrès.</p>
+              </div>
+
+              <div class="security-card">
+                <strong>Suivi qualité</strong>
+                <p>Observer la participation, l’assiduité, la progression, la satisfaction et l’impact pédagogique.</p>
+              </div>
+            </div>
+
+            <ul class="check-list">
+              <li>Information claire des familles et autorisations nécessaires.</li>
+              <li>Protection contre violences, humiliations, discriminations et harcèlement.</li>
+              <li>Suivi de la participation, de l’assiduité, de la progression et de la satisfaction.</li>
+            </ul>
+
+            <div class="cta">
+              <div>
+                <h2>Une question sur le projet éducatif ?</h2>
+                <p>
+                  Parents, bénévoles ou partenaires : vous pouvez transmettre une demande d’information à l’association.
+                </p>
+              </div>
+
+              <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+                Faire une demande
+              </a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <img src="8.svg" alt="Logo ATKAN CAMP">
+      <p>ATKAN CAMP — Association éducative déclarée à Angers.</p>
+      <p class="small">Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
     </div>
-  </section>
-</main>
-<footer class="site-footer">
-  <div class="container">
-    <img src="8.svg" alt="Logo ATKAN CAMP">
-    <p>ATKAN CAMP — Association éducative déclarée à Angers.</p>
-    <p class="small">Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>
