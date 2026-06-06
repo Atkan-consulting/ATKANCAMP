@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4f7f3a" />
 
   <title>ATKAN CAMP - Association éducative</title>
   <meta name="description" content="ATKAN CAMP, association éducative déclarée à Angers : camps, ateliers et projets pédagogiques pour apprendre autrement.">
@@ -14,13 +15,11 @@
       --orange: #f26a1b;
       --cream: #faf7ef;
       --white: #ffffff;
-      --dark: #1f2a1f;
       --text: #374137;
       --soft: #eef4e8;
       --shadow: 0 18px 45px rgba(31, 42, 31, 0.12);
       --shadow-soft: 0 10px 28px rgba(31, 42, 31, 0.08);
       --radius: 26px;
-      --radius-small: 18px;
     }
 
     * {
@@ -37,8 +36,13 @@
       font-family: Arial, Helvetica, sans-serif;
       background: var(--cream);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
+    }
+
+    body.menu-open,
+    body.legal-opened {
+      overflow: hidden;
     }
 
     a {
@@ -92,12 +96,14 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      position: relative;
     }
 
     .brand {
       display: flex;
       align-items: center;
       flex-shrink: 0;
+      z-index: 1002;
     }
 
     .brand img {
@@ -118,7 +124,8 @@
       transition: 0.25s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
       color: var(--orange);
     }
 
@@ -139,6 +146,7 @@
       cursor: pointer;
       font-size: 1.45rem;
       font-weight: 900;
+      z-index: 1002;
     }
 
     .btn {
@@ -166,6 +174,17 @@
     .btn.secondary {
       background: var(--green);
       box-shadow: 0 12px 25px rgba(79, 127, 58, 0.25);
+    }
+
+    .btn.light {
+      background: var(--white);
+      color: var(--green-dark);
+      box-shadow: 0 12px 25px rgba(255, 255, 255, 0.18);
+    }
+
+    .btn.light:hover {
+      background: var(--soft);
+      color: var(--green-dark);
     }
 
     .hero {
@@ -236,7 +255,8 @@
       margin-bottom: 34px;
     }
 
-    .hero-actions {
+    .hero-actions,
+    .cta-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
@@ -273,7 +293,7 @@
     }
 
     .section.compact {
-      padding: clamp(42px, 6vw, 58px) 0;
+      padding: 34px 0;
     }
 
     .section-title {
@@ -291,14 +311,6 @@
 
     .section-title p {
       font-size: clamp(1rem, 2vw, 1.08rem);
-    }
-
-    .location-band,
-    .card,
-    .hero-card,
-    .faq-summary-item,
-    .faq-list details {
-      transform: translateZ(0);
     }
 
     .location-band {
@@ -384,30 +396,6 @@
       margin-bottom: 10px;
     }
 
-    .faq-tools {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin: 30px 0;
-    }
-
-    .faq-search {
-      flex: 1 1 280px;
-      min-height: 52px;
-      padding: 14px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(79, 127, 58, 0.2);
-      background: white;
-      color: var(--text);
-      outline: none;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .faq-search:focus {
-      border-color: var(--orange);
-    }
-
     .faq-summary {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -448,16 +436,10 @@
       border-radius: 20px;
       box-shadow: 0 12px 32px rgba(31, 42, 31, 0.06);
       overflow: hidden;
-      transition: 0.25s ease;
     }
 
     .faq-list details[open] {
       border-color: rgba(242, 106, 27, 0.45);
-      box-shadow: 0 18px 42px rgba(31, 42, 31, 0.1);
-    }
-
-    .faq-list details.is-hidden {
-      display: none;
     }
 
     .faq-list summary {
@@ -470,7 +452,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      min-height: 68px;
     }
 
     .faq-list summary::-webkit-details-marker {
@@ -489,7 +470,6 @@
       place-items: center;
       font-size: 1.35rem;
       font-weight: 900;
-      transition: 0.25s ease;
     }
 
     .faq-list details[open] summary::after {
@@ -507,18 +487,6 @@
       margin-bottom: 13px;
     }
 
-    .faq-answer ul {
-      margin: 10px 0 14px 22px;
-    }
-
-    .faq-answer li {
-      margin-bottom: 6px;
-    }
-
-    .faq-answer strong {
-      color: var(--green-dark);
-    }
-
     .faq-highlight {
       background: linear-gradient(90deg, rgba(242, 106, 27, 0.14), rgba(79, 127, 58, 0.06));
       border-left: 4px solid var(--orange);
@@ -529,10 +497,10 @@
 
     .faq-cta,
     .cta {
-      margin-top: 42px;
+      margin-top: 24px;
       background: linear-gradient(135deg, var(--green-dark), var(--green));
       border-radius: 30px;
-      padding: clamp(28px, 4vw, 36px);
+      padding: clamp(26px, 4vw, 38px);
       color: var(--white);
       box-shadow: var(--shadow);
       display: flex;
@@ -547,17 +515,30 @@
       margin-top: 0;
     }
 
+    .section.compact + .section.compact {
+      margin-top: -20px;
+    }
+
     .faq-cta h3,
     .cta h2 {
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-size: clamp(1.55rem, 4vw, 2.35rem);
       line-height: 1.15;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .faq-cta p,
     .cta p {
-      max-width: 720px;
-      color: rgba(255, 255, 255, 0.9);
+      max-width: 760px;
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 1rem;
+    }
+
+    .cta-content {
+      max-width: 820px;
+    }
+
+    .cta-actions {
+      margin-top: 20px;
     }
 
     .site-footer {
@@ -577,19 +558,114 @@
       opacity: 0.85;
     }
 
-    @media (max-width: 1060px) {
-      .nav-links {
-        gap: 14px;
-        font-size: 0.88rem;
-      }
+    .legal-footer {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
 
-      .brand img {
-        width: 180px;
-      }
+    .legal-open {
+      background: transparent;
+      border: none;
+      color: var(--orange);
+      font-weight: 900;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
 
-      .navbar > .btn {
-        padding: 12px 18px;
-      }
+    .legal-open:hover {
+      text-decoration: underline;
+    }
+
+    .legal-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: none;
+    }
+
+    .legal-modal.is-open {
+      display: block;
+    }
+
+    .legal-modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(31, 42, 31, 0.62);
+      backdrop-filter: blur(6px);
+    }
+
+    .legal-modal-content {
+      position: relative;
+      z-index: 1;
+      width: min(920px, calc(100% - 32px));
+      max-height: 88vh;
+      margin: 6vh auto;
+      background: var(--white);
+      border-radius: 28px;
+      box-shadow: 0 28px 80px rgba(31, 42, 31, 0.28);
+      overflow: hidden;
+      border: 1px solid rgba(79, 127, 58, 0.16);
+    }
+
+    .legal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 1.6rem;
+      font-weight: 900;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .legal-modal-header {
+      padding: 32px 34px 20px;
+      background: linear-gradient(135deg, rgba(79, 127, 58, 0.12), rgba(242, 106, 27, 0.1));
+    }
+
+    .legal-modal-header h2 {
+      color: var(--green-dark);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .legal-modal-body {
+      max-height: 62vh;
+      overflow-y: auto;
+      padding: 30px 34px 38px;
+    }
+
+    .legal-modal-body h3 {
+      color: var(--green-dark);
+      margin: 24px 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .legal-modal-body p {
+      margin-bottom: 12px;
+    }
+
+    .legal-modal-body ul {
+      margin: 10px 0 16px 22px;
+    }
+
+    .legal-modal-body li {
+      margin-bottom: 6px;
+    }
+
+    .legal-modal-body a {
+      color: var(--orange);
+      font-weight: 900;
     }
 
     @media (max-width: 920px) {
@@ -606,7 +682,8 @@
         place-items: center;
       }
 
-      .navbar > .btn {
+      .navbar > .btn,
+      .header-actions > .btn {
         display: none;
       }
 
@@ -622,8 +699,9 @@
         display: none;
         flex-direction: column;
         align-items: stretch;
-        gap: 6px;
+        gap: 8px;
         box-shadow: var(--shadow);
+        z-index: 1001;
       }
 
       .nav-links.is-open {
@@ -676,11 +754,25 @@
         letter-spacing: -1px;
       }
 
+      .section.compact {
+        padding: 24px 0;
+      }
+
+      .section.compact + .section.compact {
+        margin-top: -10px;
+      }
+
       .hero-actions,
-      .faq-tools,
+      .cta-actions,
       .faq-cta,
       .cta {
         align-items: stretch;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .cta-actions {
+        gap: 12px;
       }
 
       .btn {
@@ -711,12 +803,6 @@
         align-items: flex-start;
       }
 
-      .faq-list summary::after {
-        flex-basis: 30px;
-        width: 30px;
-        height: 30px;
-      }
-
       .faq-answer {
         padding: 0 18px 22px;
       }
@@ -724,36 +810,29 @@
       .site-footer img {
         width: 150px;
       }
-    }
 
-    @media (max-width: 420px) {
-      .brand img {
-        width: 138px;
+      .legal-modal-content {
+        width: calc(100% - 20px);
+        max-height: 92vh;
+        margin: 4vh auto;
+        border-radius: 22px;
       }
 
-      .menu-toggle {
-        width: 42px;
-        height: 42px;
+      .legal-modal-header {
+        padding: 26px 22px 18px;
       }
 
-      .eyebrow {
-        font-size: 0.82rem;
+      .legal-modal-body {
+        max-height: 68vh;
+        padding: 22px;
+        font-size: 0.94rem;
       }
 
-      .faq-summary-item strong {
-        font-size: 1.55rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition: none !important;
+      .legal-close {
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
       }
     }
   </style>
@@ -775,7 +854,6 @@
         <a href="camps.html">Camps</a>
         <a href="#faq">FAQ</a>
         <a href="contact.html">Contact</a>
-  
       </nav>
 
       <div class="header-actions">
@@ -807,6 +885,9 @@
             </a>
             <a class="btn secondary" href="camps.html">
               Découvrir les camps
+            </a>
+            <a class="btn light" href="https://forms.gle/UC71tjftpAYNf1gX9" target="_blank" rel="noopener">
+              Je pose ma question
             </a>
           </div>
         </div>
@@ -909,10 +990,9 @@
       <div class="container">
         <div class="section-title">
           <span class="eyebrow">FAQ officielle</span>
-          <h2>CAMP LANGUES : <span>les réponses claires aux questions des familles</span>.</h2>
+          <h2>CAMP LANGUES : <span>10 réponses essentielles pour les familles</span>.</h2>
           <p>
-            Une FAQ claire pour comprendre l’organisation, les tarifs, la méthode pédagogique,
-            les inscriptions et l’accompagnement proposé par ATKAN CAMP.
+            Une FAQ volontairement courte pour comprendre l’essentiel. Pour toute autre question, un formulaire libre est disponible.
           </p>
         </div>
 
@@ -933,463 +1013,91 @@
           </div>
 
           <div class="faq-summary-item">
-            <strong>Angers</strong>
-            <p>secteur Monplaisir-Saint-Serge</p>
+            <strong>12</strong>
+            <p>enfants maximum par groupe, sauf dérogation</p>
           </div>
-        </div>
-
-        <div class="faq-tools">
-          <input class="faq-search" id="faqSearch" type="search" placeholder="Rechercher une question : tarif, absence, inscription..." aria-label="Rechercher dans la FAQ">
-          <button class="btn secondary" type="button" id="closeFaq">Tout fermer</button>
         </div>
 
         <div class="faq-list" id="faqList">
           <details open>
             <summary>1. À qui s’adresse CAMP LANGUES ?</summary>
             <div class="faq-answer">
-              <p>Le CAMP LANGUES s’adresse principalement aux enfants, adolescents et jeunes de 4 ans à 18 ans, qui souhaitent apprendre une langue autrement, avec une pédagogie active, orale, progressive et motivante.</p>
-              <p>Les groupes seront organisés en fonction de l’âge, du niveau et du nombre d’inscriptions afin de proposer un accompagnement adapté à chaque enfant.</p>
-              <p>Si un groupe d’adultes intéressés se constitue, ATKAN CAMP pourra également envisager la mise en place d’un cours adapté.</p>
+              <p>Le CAMP LANGUES s’adresse principalement aux enfants, adolescents et jeunes de 4 à 18 ans qui souhaitent apprendre une langue autrement, avec une pédagogie active, orale, progressive et motivante.</p>
+              <p>Les groupes sont organisés selon l’âge, le niveau et le nombre d’inscriptions.</p>
             </div>
           </details>
 
           <details>
             <summary>2. Quelles langues sont proposées ?</summary>
             <div class="faq-answer">
-              <p>ATKAN CAMP propose principalement :</p>
-              <ul>
-                <li>l’anglais ;</li>
-                <li>l’arabe ;</li>
-                <li>le français FLE, pour les personnes qui ne maîtrisent pas encore la langue française.</li>
-              </ul>
-              <p>Le choix de la langue se fait au moment de l’inscription afin de constituer les groupes de manière cohérente.</p>
+              <p>ATKAN CAMP propose principalement l’anglais, l’arabe et le français FLE pour les personnes qui ne maîtrisent pas encore la langue française.</p>
             </div>
           </details>
 
           <details>
-            <summary>3. Un enfant peut-il suivre plusieurs langues ?</summary>
-            <div class="faq-answer">
-              <p>Oui, un enfant peut être intéressé par plusieurs langues, par exemple l’anglais et l’arabe.</p>
-              <p>Cependant, l’organisation dépendra du nombre d’inscrits, des horaires disponibles, du niveau de l’enfant et de la capacité d’encadrement.</p>
-              <p>Si plusieurs langues sont suivies, une organisation spécifique pourra être proposée.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>4. Combien coûte CAMP LANGUES ?</summary>
+            <summary>3. Combien coûte CAMP LANGUES ?</summary>
             <div class="faq-answer">
               <p>Le tarif du CAMP LANGUES est de <strong>100 € par semestre et par langue</strong>.</p>
               <p class="faq-highlight">Pour les fratries ou les enfants qui suivent deux parcours CAMP LANGUES, un tarif adapté de <strong>175 €</strong> pourra être proposé.</p>
-              <p>Ce tarif comprend déjà l’adhésion annuelle à ATKAN CAMP. Il ne s’agit donc pas de 100 € + 20 €.</p>
-              <p>L’adhésion annuelle de 20 € concerne uniquement les personnes qui souhaitent participer aux autres camps sans être inscrites au CAMP LANGUES.</p>
+              <p>Ce tarif comprend déjà l’adhésion annuelle à ATKAN CAMP.</p>
             </div>
           </details>
 
           <details>
-            <summary>5. L’engagement est-il au semestre ou à l’année ?</summary>
+            <summary>4. L’engagement est-il au semestre ou à l’année ?</summary>
             <div class="faq-answer">
-              <p>L’inscription au CAMP LANGUES se fait par semestre.</p>
-              <p>L’objectif est de permettre aux familles de s’engager progressivement, sans pression excessive. Chaque semestre correspond à une période pédagogique structurée.</p>
+              <p>L’inscription au CAMP LANGUES se fait par semestre afin de permettre aux familles de s’engager progressivement.</p>
+              <p>Les familles peuvent également choisir un paiement à l’année, avec une possibilité de règlement en <strong>2 ou 3 fois</strong>, selon les modalités définies par l’association.</p>
             </div>
           </details>
 
           <details>
-            <summary>6. Comment s’organise l’année ?</summary>
+            <summary>5. Comment s’organise l’année ?</summary>
             <div class="faq-answer">
-              <p>Le CAMP LANGUES comprend <strong>25 rendez-vous pédagogiques dans l’année</strong>.</p>
-              <p>Ces rendez-vous incluent les cours, les temps de révision, les évaluations, les activités orales, les projets pédagogiques et le bilan de progression de l’enfant.</p>
-              <p>Une rencontre parents-ATKAN CAMP sera organisée autour de ce bilan.</p>
+              <p>Le CAMP LANGUES comprend <strong>25 rendez-vous pédagogiques dans l’année</strong>, incluant cours, révisions, activités orales, projets pédagogiques et bilan de progression.</p>
             </div>
           </details>
 
           <details>
-            <summary>7. Où auront lieu les séances ?</summary>
+            <summary>6. Où auront lieu les séances ?</summary>
             <div class="faq-answer">
               <p>L’organisation est envisagée sur le secteur <strong>Monplaisir-Saint-Serge à Angers</strong>, notamment autour de la Cité des associations.</p>
-              <p>Le lieu exact sera confirmé en fonction des groupes, des inscriptions, des disponibilités des familles, des intervenants et des salles disponibles.</p>
+              <p>Le lieu exact sera confirmé selon les groupes, les inscriptions et les salles disponibles.</p>
             </div>
           </details>
 
           <details>
-            <summary>8. Quels seront les horaires ?</summary>
+            <summary>7. Quelles sont les modalités de paiement ?</summary>
             <div class="faq-answer">
-              <p>Les horaires seront définis en fonction des groupes constitués, des âges et niveaux, des disponibilités des familles, des intervenants et des salles disponibles.</p>
-              <p>ATKAN CAMP cherchera à proposer une organisation simple, régulière et compatible avec le rythme scolaire des enfants.</p>
+              <p>Les paiements pourront être effectués en espèces ou par virement bancaire.</p>
+              <p>Les modalités seront précisées avant validation définitive de l’inscription.</p>
             </div>
           </details>
 
           <details>
-            <summary>9. Quelles sont les modalités de paiement ?</summary>
+            <summary>8. Quelle est la méthode ATKAN CAMP ?</summary>
             <div class="faq-answer">
-              <p>Les paiements pourront être effectués en espèces ou par virement bancaire..</p>
-              <p>L’association souhaite proposer un cadre clair, accessible et sérieux, avec des informations communiquées aux familles avant validation définitive de l’inscription.</p>
+              <p>La méthode ATKAN CAMP repose sur l’oral, la pratique, la confiance, la répétition intelligente, les projets et la progression adaptée au niveau de l’enfant.</p>
+              <p>L’objectif est d’aider l’enfant à utiliser la langue dans des situations réelles.</p>
             </div>
           </details>
 
           <details>
-            <summary>10. Comment gérer une absence ?</summary>
+            <summary>9. Combien d’enfants y aura-t-il par groupe ?</summary>
             <div class="faq-answer">
-              <p>En cas d’absence ponctuelle, la famille devra informer l’association dès que possible.</p>
-              <p>L’absence ne donne pas automatiquement lieu à un remboursement, car les groupes, les intervenants et les créneaux sont organisés à l’avance.</p>
-              <p>ATKAN CAMP restera attentive aux situations particulières et cherchera toujours à garder un dialogue humain avec les familles.</p>
+              <p>Le nombre d’enfants par groupe sera limité à <strong>12</strong>, avec une possibilité exceptionnelle d’accueil jusqu’à 13 enfants sur dérogation, afin de garantir un accompagnement pédagogique de qualité.</p>
             </div>
           </details>
 
           <details>
-            <summary>11. Que se passe-t-il en cas d’arrêt en cours de semestre ?</summary>
+            <summary>10. Comment poser une autre question ?</summary>
             <div class="faq-answer">
-              <p>L’inscription étant organisée au semestre, l’engagement porte sur la période concernée.</p>
-              <p>En cas d’arrêt en cours de semestre, les conditions seront étudiées selon la situation.</p>
-              <p class="faq-highlight">Si l’enfant dépasse un taux de 60 % d’absence sur la période concernée, la situation pourra être étudiée par l’association et un remboursement pourra être envisagé selon les conditions définies.</p>
-              <p>L’objectif est d’être clair, juste et responsable, sans désorganiser le fonctionnement collectif.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>12. L’inscription au CAMP LANGUES donne-t-elle accès aux autres camps ?</summary>
-            <div class="faq-answer">
-              <p>Oui, l’inscription au CAMP LANGUES inclut l’adhésion annuelle à ATKAN CAMP.</p>
-              <p>Cette adhésion permet à l’enfant de pouvoir accéder aux autres camps proposés par l’association, selon les places disponibles et l’organisation prévue.</p>
-              <ul>
-                <li>CAMP ÉLOQUENCE ;</li>
-                <li>CAMP MÉTHODOLOGIE ;</li>
-                <li>CAMP ESPRIT CRITIQUE ET CITOYENNETÉ.</li>
-              </ul>
-              <p>Certains événements ou ateliers spécifiques pourront nécessiter une inscription complémentaire.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>13. Quelle est la méthode ATKAN CAMP ?</summary>
-            <div class="faq-answer">
-              <p>ATKAN CAMP s’appuie sur une méthode active, progressive et concrète.</p>
-              <p>L’objectif n’est pas seulement d’apprendre des mots par cœur, mais d’aider l’enfant à utiliser la langue dans des situations réelles.</p>
-              <ul>
-                <li>l’oral ;</li>
-                <li>la pratique ;</li>
-                <li>la confiance ;</li>
-                <li>la répétition intelligente ;</li>
-                <li>les projets ;</li>
-                <li>la progression adaptée au niveau de l’enfant.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details>
-            <summary>14. Quels supports pédagogiques sont utilisés ?</summary>
-            <div class="faq-answer">
-              <p>Les supports peuvent varier selon l’âge, le niveau et l’objectif de la séance.</p>
-              <ul>
-                <li>jeux pédagogiques ;</li>
-                <li>supports papier ;</li>
-                <li>activités orales ;</li>
-                <li>mises en situation ;</li>
-                <li>images et cartes ;</li>
-                <li>outils numériques ;</li>
-                <li>projets collectifs ;</li>
-                <li>supports audio ou vidéo lorsque cela est utile.</li>
-              </ul>
-              <p>L’idée est simple : apprendre sérieusement, sans rendre l’apprentissage lourd ou ennuyeux.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>15. Comment maintenez-vous la motivation des enfants ?</summary>
-            <div class="faq-answer">
-              <p>La motivation est au cœur du projet pédagogique d’ATKAN CAMP.</p>
-              <p>Les apprentissages sont organisés de manière progressive, avec des objectifs accessibles, des activités variées et des projets concrets.</p>
-              <p>Chez ATKAN CAMP, l’enfant est acteur de son apprentissage.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>16. Y aura-t-il des évaluations ?</summary>
-            <div class="faq-answer">
-              <p>Oui, mais l’évaluation ne sera pas pensée comme une sanction.</p>
-              <p>Elle servira surtout à mesurer la progression de l’enfant, à identifier ses points forts, ses besoins et les prochaines étapes à travailler.</p>
-              <p>Un bilan de progression sera partagé avec les familles.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>17. Qui encadre les cours ?</summary>
-            <div class="faq-answer">
-              <p>Les cours et ateliers sont encadrés par des intervenants sélectionnés par ATKAN CAMP selon leurs compétences, leur sérieux et leur capacité à accompagner les enfants.</p>
-              <p>L’association souhaite construire une équipe fiable, bienveillante et engagée.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>18. Pourquoi choisir ATKAN CAMP plutôt qu’un cours classique ?</summary>
-            <div class="faq-answer">
-              <p>ATKAN CAMP ne veut pas simplement proposer un cours de langue supplémentaire.</p>
-              <p>Le projet est plus large : aider les enfants et les jeunes à apprendre autrement, à prendre confiance, à s’exprimer, à réfléchir, à progresser et à construire des compétences utiles pour leur avenir.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>19. Comment se fait l’inscription ?</summary>
-            <div class="faq-answer">
-              <p>L’inscription se fait via les supports communiqués par l’association.</p>
-              <p>Les familles devront renseigner les informations nécessaires concernant l’enfant, la langue choisie, les coordonnées du responsable légal et les éventuelles informations utiles.</p>
-              <p>L’inscription définitive sera confirmée après validation du groupe, du créneau, du lieu et des modalités pratiques.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>20. Les groupes seront-ils constitués par âge ou par niveau ?</summary>
-            <div class="faq-answer">
-              <p>Les groupes seront constitués en tenant compte à la fois de l’âge, du niveau, du nombre d’inscrits et de la maturité des enfants.</p>
-              <p>L’objectif est d’éviter les groupes trop déséquilibrés et de proposer un cadre cohérent.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>21. Y aura-t-il un test de niveau avant l’inscription ?</summary>
-            <div class="faq-answer">
-              <p>Un court échange ou une évaluation simple pourra être proposé afin de mieux situer le niveau de l’enfant.</p>
-              <p>Ce test ne sert pas à sélectionner, mais à mieux orienter l’enfant.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>22. Mon enfant est débutant, peut-il s’inscrire ?</summary>
-            <div class="faq-answer">
-              <p>Oui, le CAMP LANGUES est ouvert aux débutants.</p>
-              <p>La méthode ATKAN CAMP permet une progression par étapes, en partant de l’oral, des mots simples et des situations concrètes.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>23. Mon enfant a déjà un bon niveau, est-ce utile pour lui ?</summary>
-            <div class="faq-answer">
-              <p>Oui, car le CAMP LANGUES ne se limite pas à apprendre du vocabulaire de base.</p>
-              <p>Un enfant déjà à l’aise pourra développer son expression orale, sa fluidité, sa compréhension, sa capacité à présenter un projet et à argumenter.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>24. Les parents pourront-ils suivre la progression de leur enfant ?</summary>
-            <div class="faq-answer">
-              <p>Oui, un suivi de progression sera prévu.</p>
-              <p>Les familles pourront avoir un retour sur l’évolution de leur enfant, ses points forts, ses axes de progression et son engagement.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>25. Les enfants auront-ils du travail à faire à la maison ?</summary>
-            <div class="faq-answer">
-              <p>ATKAN CAMP pourra proposer de petites activités simples à refaire à la maison.</p>
-              <p>L’objectif n’est pas de surcharger l’enfant, mais de renforcer les apprentissages.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>26. Est-ce que le CAMP LANGUES remplace les cours de langue à l’école ?</summary>
-            <div class="faq-answer">
-              <p>Non, le CAMP LANGUES ne remplace pas l’école.</p>
-              <p>Il vient en complément, avec une approche plus pratique, plus orale et plus active.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>27. Combien d’enfants y aura-t-il par groupe ?</summary>
-            <div class="faq-answer">
-              <p>Le nombre d’enfants par groupe sera limité à 12, avec une possibilité exceptionnelle d’accueil jusqu’à 13 enfants sur dérogation, afin de garantir un accompagnement pédagogique de qualité.</p>
-              <p>L’apprentissage d’une langue demande de la participation, de l’écoute et du temps de parole pour chaque enfant.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>28. Les enfants seront-ils mélangés avec des adolescents ?</summary>
-            <div class="faq-answer">
-              <p>Les groupes seront organisés avec attention.</p>
-              <p>Lorsque cela est possible, les enfants, les adolescents et les jeunes seront répartis dans des groupes adaptés.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>29. Que se passe-t-il si le niveau de mon enfant ne correspond pas au groupe ?</summary>
-            <div class="faq-answer">
-              <p>Si l’association constate qu’un groupe n’est pas adapté au niveau de l’enfant, un échange pourra être proposé avec la famille.</p>
-              <p>L’objectif sera de trouver une solution plus cohérente : changement de groupe, adaptation des activités ou accompagnement progressif.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>30. Les cours sont-ils uniquement théoriques ?</summary>
-            <div class="faq-answer">
-              <p>Non. Le CAMP LANGUES repose sur une pédagogie active.</p>
-              <p>Les enfants apprennent en parlant, en écoutant, en jouant, en répétant, en échangeant et en réalisant des projets.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>31. Les enfants utiliseront-ils des ordinateurs ou des outils numériques ?</summary>
-            <div class="faq-answer">
-              <p>Des outils numériques pourront être utilisés lorsque cela apporte une vraie valeur pédagogique.</p>
-              <p>L’objectif n’est pas de mettre les enfants devant un écran en permanence, mais d’utiliser le numérique comme support utile.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>32. Les familles doivent-elles acheter du matériel ?</summary>
-            <div class="faq-answer">
-              <p>Dans la majorité des cas, aucun matériel coûteux ne sera demandé.</p>
-              <p>Les familles pourront simplement prévoir une trousse, un cahier ou un classeur selon les indications données par l’association.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>33. Est-ce que les cours auront lieu pendant les vacances scolaires ?</summary>
-            <div class="faq-answer">
-              <p>L’organisation annuelle pourra inclure certains rendez-vous pendant les périodes de vacances scolaires, notamment sous forme d’ateliers, de révisions ou de temps pédagogiques spécifiques.</p>
-              <p>Les dates seront communiquées aux familles afin qu’elles puissent s’organiser.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>34. Que se passe-t-il si une séance est annulée par l’association ?</summary>
-            <div class="faq-answer">
-              <p>Si une séance est annulée par ATKAN CAMP, l’association cherchera à proposer une solution de remplacement lorsque cela est possible.</p>
-              <p>L’objectif est de respecter le nombre de rendez-vous pédagogiques annoncés.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>35. Les parents peuvent-ils assister aux cours ?</summary>
-            <div class="faq-answer">
-              <p>Les cours sont principalement destinés aux enfants afin de favoriser leur autonomie et leur participation.</p>
-              <p>Des temps spécifiques pourront être organisés avec les familles : réunion d’information, bilan de progression, présentation de projet ou rencontre parents-ATKAN CAMP.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>36. Y aura-t-il une réunion de présentation avant le début des cours ?</summary>
-            <div class="faq-answer">
-              <p>Oui, ATKAN CAMP pourra organiser une réunion de présentation afin d’expliquer le projet associatif, la méthode pédagogique, l’organisation des groupes, les règles de fonctionnement et les objectifs du CAMP LANGUES.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>37. L’association est-elle déclarée officiellement ?</summary>
-            <div class="faq-answer">
-              <p>Oui, ATKAN CAMP est une association déclarée à Angers.</p>
-              <p>Elle porte un projet éducatif, associatif et citoyen structuré.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>38. Les enfants recevront-ils une attestation de participation ?</summary>
-            <div class="faq-answer">
-              <p>ATKAN CAMP pourra remettre une attestation de participation ou de suivi à la fin du parcours, notamment pour valoriser l’engagement de l’enfant.</p>
-              <p>Cette attestation ne remplace pas un diplôme officiel.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>39. Comment la sécurité des enfants est-elle assurée ?</summary>
-            <div class="faq-answer">
-              <p>La sécurité des enfants est une priorité.</p>
-              <p>Les séances seront organisées dans un cadre identifié, avec des intervenants responsables et des règles de fonctionnement claires.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>40. Qui peut récupérer l’enfant à la fin de la séance ?</summary>
-            <div class="faq-answer">
-              <p>L’enfant devra être récupéré par un responsable légal ou une personne autorisée par la famille.</p>
-              <p>Les modalités précises seront demandées au moment de l’inscription afin d’assurer un cadre clair et sécurisé.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>41. Que faire si mon enfant a des besoins particuliers ?</summary>
-            <div class="faq-answer">
-              <p>Les familles sont invitées à signaler toute information utile au moment de l’inscription.</p>
-              <p>ATKAN CAMP étudiera la situation avec sérieux afin de voir comment adapter l’accompagnement dans la limite de ses moyens humains, pédagogiques et matériels.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>42. Le CAMP LANGUES est-il adapté aux enfants timides ?</summary>
-            <div class="faq-answer">
-              <p>Oui, le CAMP LANGUES peut être particulièrement utile pour les enfants timides.</p>
-              <p>La méthode repose sur une progression douce, avec des activités guidées, de la répétition, des jeux et des situations rassurantes.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>43. Que faire si mon enfant perd sa motivation en cours de semestre ?</summary>
-            <div class="faq-answer">
-              <p>La motivation peut varier, c’est normal.</p>
-              <p>ATKAN CAMP cherchera à comprendre la situation : difficulté de niveau, fatigue, manque de confiance ou besoin d’un autre type d’activité.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>44. Les familles peuvent-elles proposer des idées ou faire des retours ?</summary>
-            <div class="faq-answer">
-              <p>Oui, les retours des familles sont importants.</p>
-              <p>Les remarques constructives permettront d’améliorer l’organisation, les supports et les activités proposées.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>45. Peut-on devenir bénévole au sein d’ATKAN CAMP ?</summary>
-            <div class="faq-answer">
-              <p>Oui, les personnes intéressées peuvent se rapprocher de l’association.</p>
-              <p>ATKAN CAMP peut accueillir des bénévoles selon les besoins : organisation, communication, événements, soutien administratif ou projets pédagogiques.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>46. Peut-on soutenir l’association en tant que partenaire ?</summary>
-            <div class="faq-answer">
-              <p>Oui, ATKAN CAMP est ouverte aux partenariats.</p>
-              <p>Les collectivités, associations, établissements, entreprises ou acteurs locaux peuvent échanger avec l’association afin de soutenir le projet éducatif.</p>
-            </div>
-          </details>
-
-      <details>
-  <summary>47. Comment contacter ATKAN CAMP pour poser une question ?</summary>
-  <div class="faq-answer">
-    <p>Les familles peuvent contacter ATKAN CAMP via les canaux officiels communiqués par l’association.</p>
-    <p>Une demande d’information peut être transmise avant toute inscription, adhésion ou participation à un camp.</p>
-    <p>
-      <a 
-        href="https://forms.gle/EhNMZDwcqq7nu2UDA" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        style="display:inline-block; background:#f97316; color:#ffffff; padding:12px 20px; border-radius:10px; text-decoration:none; font-weight:700;"
-      >
-        Je pose ma question
-      </a>
-    </p>
-  </div>
-</details>
-
-          <details>
-            <summary>48. Pourquoi le nom ATKAN CAMP ?</summary>
-            <div class="faq-answer">
-              <p>ATKAN est un nom identitaire inspiré de l’idée de construction, de progression et d’édification.</p>
-              <p>Il porte une promesse pédagogique : aider chaque enfant à se construire progressivement par l’apprentissage, avec méthode, confiance et exigence.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>49. Quelle est l’ambition d’ATKAN CAMP à long terme ?</summary>
-            <div class="faq-answer">
-              <p>L’ambition d’ATKAN CAMP est de développer une structure éducative sérieuse, accessible et durable à Angers, avec une possibilité d’élargissement à l’échelle régionale, voire nationale.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>50. Quel engagement envers les familles ?</summary>
-            <div class="faq-answer">
-              <p>Notre engagement est simple : proposer un cadre sérieux, humain et structuré.</p>
-              <p>Nous voulons que les familles sachent où elles inscrivent leur enfant, pourquoi elles l’inscrivent, ce qu’il va apprendre et comment sa progression sera suivie.</p>
-              <p>ATKAN CAMP avance avec une vision claire : rendre l’apprentissage plus vivant, plus accessible et plus utile pour les enfants, les adolescents et les jeunes.</p>
+              <p>Pour toute question complémentaire, vous pouvez utiliser le formulaire dédié.</p>
+              <p>
+                <a class="btn" href="https://forms.gle/UC71tjftpAYNf1gX9" target="_blank" rel="noopener">
+                  Je pose ma question
+                </a>
+              </p>
             </div>
           </details>
         </div>
@@ -1403,9 +1111,15 @@
             </p>
           </div>
 
-          <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
-            Demander des informations
-          </a>
+          <div class="cta-actions">
+            <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+              Demander des informations
+            </a>
+
+            <a class="btn light" href="https://forms.gle/UC71tjftpAYNf1gX9" target="_blank" rel="noopener">
+              Je pose ma question
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -1415,12 +1129,21 @@
         <div class="cta">
           <div class="cta-content">
             <h2>Parents, bénévoles, partenaires : <span>construisons le lien</span>.</h2>
-            <p>Une question sur les camps, les inscriptions, les partenariats ou le développement à Angers et au-delà ? Le formulaire est là.</p>
+            <p>
+              Une question sur les camps, les inscriptions, les partenariats ou le développement à Angers et au-delà ?
+              Le formulaire est là.
+            </p>
           </div>
 
-          <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
-            Accéder au formulaire
-          </a>
+          <div class="cta-actions">
+            <a class="btn" href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+              Accéder au formulaire
+            </a>
+
+            <a class="btn light" href="https://forms.gle/UC71tjftpAYNf1gX9" target="_blank" rel="noopener">
+              Je pose ma question
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -1431,61 +1154,173 @@
       <img src="8.svg" alt="Logo ATKAN CAMP">
       <p>ATKAN CAMP — Association éducative déclarée à Angers.</p>
       <p class="small">Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
+      <p class="legal-footer">
+        <button class="legal-open" type="button" onclick="openLegalModal()">Mentions légales</button>
+        <span>·</span>
+        <span>ATKAN CAMP © 2026</span>
+      </p>
     </div>
   </footer>
+
+  <div class="legal-modal" id="legalModal" aria-hidden="true">
+    <div class="legal-modal-overlay" onclick="closeLegalModal()"></div>
+
+    <div class="legal-modal-content" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+      <button class="legal-close" type="button" onclick="closeLegalModal()" aria-label="Fermer les mentions légales">×</button>
+
+      <div class="legal-modal-header">
+        <span class="eyebrow">Informations officielles</span>
+        <h2 id="legalTitle">Mentions légales <span>ATKAN CAMP</span></h2>
+        <p>ATKAN CAMP © 2026</p>
+      </div>
+
+      <div class="legal-modal-body">
+        <h3>1. Éditeur du site</h3>
+        <p>
+          <strong>ATKAN CAMP</strong><br>
+          Association régie par la loi du 1er juillet 1901<br>
+          Association déclarée à Angers<br>
+          SIREN : <strong>105 825 525</strong><br>
+          Siège social : <strong>58 boulevard Doyenné, 49100 Angers</strong><br>
+          Adresse e-mail : <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong><br>
+          Téléphone : <strong>06 50 41 71 52</strong>
+        </p>
+
+        <h3>2. Responsable de la publication</h3>
+        <p><strong>Haithem REKIK</strong><br>Président de l’association ATKAN CAMP</p>
+
+        <h3>3. Hébergement du site</h3>
+        <p>
+          <strong>GitHub Pages</strong><br>
+          GitHub, Inc.<br>
+          88 Colin P. Kelly Jr. Street<br>
+          San Francisco, CA 94107<br>
+          États-Unis
+        </p>
+
+        <h3>4. Objet du site</h3>
+        <p>
+          Le site internet d’ATKAN CAMP a pour objet de présenter l’association, son projet éducatif,
+          son projet associatif, ses camps, ses activités, ses documents d’information, ses formulaires
+          de contact, ses actions et ses modalités de participation.
+        </p>
+
+        <h3>5. Propriété intellectuelle</h3>
+        <p>
+          L’ensemble des contenus présents sur le site, notamment les textes, logos, visuels, documents,
+          éléments graphiques, photographies, vidéos, supports pédagogiques et contenus éditoriaux,
+          sont la propriété d’ATKAN CAMP, sauf mention contraire.
+        </p>
+
+        <h3>6. Données personnelles</h3>
+        <p>
+          ATKAN CAMP peut collecter des données personnelles dans le cadre de ses formulaires de contact,
+          de préinscription, d’adhésion, de bénévolat, de partenariat ou de demande d’information.
+        </p>
+        <ul>
+          <li>nom et prénom ;</li>
+          <li>adresse e-mail ;</li>
+          <li>numéro de téléphone ;</li>
+          <li>informations relatives au participant ou au mineur concerné ;</li>
+          <li>choix des camps ou activités ;</li>
+          <li>messages transmis à l’association ;</li>
+          <li>autorisations parentales ou informations nécessaires à l’organisation des activités.</li>
+        </ul>
+
+        <h3>7. Durée de conservation des données</h3>
+        <p>
+          Les données personnelles sont conservées pendant une durée limitée, proportionnée à leur finalité.
+          À titre indicatif, les données liées aux demandes de contact, préinscriptions ou participations
+          peuvent être conservées pendant une durée maximale de <strong>2 ans</strong>, sauf obligation légale,
+          nécessité administrative, comptable ou demande de suppression formulée par la personne concernée.
+        </p>
+
+        <h3>8. Droits des personnes</h3>
+        <p>
+          Toute personne concernée peut demander l’accès, la rectification, l’effacement ou la limitation
+          du traitement de ses données en contactant :
+          <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong>.
+        </p>
+
+        <h3>9. Cookies et traceurs</h3>
+        <p>
+          Le site peut utiliser des cookies ou traceurs nécessaires à son fonctionnement, à la mesure d’audience
+          ou à l’amélioration de l’expérience utilisateur.
+        </p>
+
+        <h3>10. Liens externes</h3>
+        <p>
+          Le site peut contenir des liens vers des sites externes, notamment des formulaires, plateformes
+          partenaires, réseaux sociaux ou services tiers. ATKAN CAMP ne peut être tenue responsable du contenu,
+          du fonctionnement ou de la politique de confidentialité de ces sites externes.
+        </p>
+
+        <h3>11. Responsabilité</h3>
+        <p>
+          ATKAN CAMP met tout en œuvre pour assurer l’exactitude et la mise à jour des informations diffusées
+          sur son site. Toutefois, l’association ne peut garantir l’absence totale d’erreurs, d’omissions
+          ou d’indisponibilités temporaires.
+        </p>
+
+        <h3>12. Contact</h3>
+        <p>
+          <strong>ATKAN CAMP</strong><br>
+          E-mail : <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong><br>
+          Adresse : <strong>58 boulevard Doyenné, 49100 Angers</strong><br>
+          Téléphone : <strong>06 50 41 71 52</strong>
+        </p>
+
+        <h3>13. Mise à jour des mentions légales</h3>
+        <p>
+          Les présentes mentions légales peuvent être modifiées à tout moment afin de tenir compte de l’évolution
+          du site, des activités de l’association ou des obligations légales applicables.
+        </p>
+        <p><strong>Dernière mise à jour : 2026</strong></p>
+        <p><strong>ATKAN CAMP © 2026</strong></p>
+      </div>
+    </div>
+  </div>
 
   <script>
     const menuButton = document.querySelector(".menu-toggle");
     const menu = document.querySelector("#menu");
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = menu.classList.toggle("is-open");
-      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      menuButton.textContent = isOpen ? "×" : "☰";
-    });
-
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        menu.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.textContent = "☰";
-      });
-    });
-
-    const searchInput = document.querySelector("#faqSearch");
-    const faqItems = document.querySelectorAll("#faqList details");
-    const closeFaqButton = document.querySelector("#closeFaq");
-
-    searchInput.addEventListener("input", () => {
-      const value = searchInput.value.toLowerCase().trim();
-
-      faqItems.forEach((item) => {
-        const text = item.innerText.toLowerCase();
-        const match = text.includes(value);
-
-        item.classList.toggle("is-hidden", !match);
-
-        if (value && match) {
-          item.open = true;
-        }
-
-        if (!value) {
-          item.open = false;
-          faqItems[0].open = true;
-        }
-      });
-    });
-
-    closeFaqButton.addEventListener("click", () => {
-      faqItems.forEach((item) => {
-        item.open = false;
+    if (menuButton && menu) {
+      menuButton.addEventListener("click", () => {
+        const isOpen = menu.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        menuButton.textContent = isOpen ? "×" : "☰";
+        document.body.classList.toggle("menu-open", isOpen);
       });
 
-      searchInput.value = "";
-
-      faqItems.forEach((item) => {
-        item.classList.remove("is-hidden");
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("is-open");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.textContent = "☰";
+          document.body.classList.remove("menu-open");
+        });
       });
+    }
+
+    function openLegalModal() {
+      const modal = document.getElementById("legalModal");
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("legal-opened");
+    }
+
+    function closeLegalModal() {
+      const modal = document.getElementById("legalModal");
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("legal-opened");
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeLegalModal();
+      }
     });
   </script>
 </body>
