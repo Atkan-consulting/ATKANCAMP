@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4f7f3a" />
+
+  <title>Mentions légales - ATKAN CAMP</title>
+  <meta name="description" content="Mentions légales du site internet de l’association ATKAN CAMP.">
+
+  <style>
+    :root {
+      --green: #4f7f3a;
+      --green-dark: #2f5f2a;
+      --orange: #f26a1b;
+      --cream: #faf7ef;
+      --white: #ffffff;
+      --text: #374137;
+      --soft: #eef4e8;
+      --shadow: 0 18px 45px rgba(31, 42, 31, 0.12);
+      --radius: 26px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 10px;
+      left: -999px;
+      background: var(--orange);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      z-index: 9999;
+      font-weight: 800;
+    }
+
+    .skip-link:focus {
+      left: 10px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250, 247, 239, 0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(79, 127, 58, 0.15);
+    }
+
+    .navbar {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      position: relative;
+    }
+
+    .brand {
+      z-index: 1002;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      width: 195px;
+      height: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-weight: 800;
+      font-size: 0.94rem;
+      color: var(--green-dark);
+    }
+
+    .nav-links a {
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--orange);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(79, 127, 58, 0.2);
+      background: white;
+      border-radius: 14px;
+      color: var(--green-dark);
+      cursor: pointer;
+      font-size: 1.45rem;
+      font-weight: 900;
+      z-index: 1002;
+      box-shadow: 0 10px 28px rgba(31, 42, 31, 0.08);
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: white;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 12px 25px rgba(242, 106, 27, 0.28);
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(242, 106, 27, 0.35);
+    }
+
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(54px, 8vw, 90px) 0 clamp(42px, 6vw, 68px);
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(242, 106, 27, 0.12);
+      top: -140px;
+      right: -120px;
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(79, 127, 58, 0.14);
+      bottom: -120px;
+      left: -100px;
+    }
+
+    .page-title {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      background: var(--soft);
+      color: var(--green-dark);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 22px;
+      border: 1px solid rgba(79, 127, 58, 0.18);
+      font-size: 0.92rem;
+    }
+
+    h1 {
+      color: var(--green-dark);
+      font-size: clamp(2.3rem, 7vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    h1 span,
+    h2 span {
+      color: var(--orange);
+    }
+
+    .lead {
+      font-size: clamp(1.02rem, 2vw, 1.18rem);
+      max-width: 780px;
+    }
+
+    .legal-section {
+      padding: 38px 0 70px;
+    }
+
+    .legal-card {
+      background: var(--white);
+      border-radius: 34px;
+      padding: clamp(26px, 5vw, 52px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(79, 127, 58, 0.12);
+    }
+
+    .legal-intro {
+      background: linear-gradient(90deg, rgba(242, 106, 27, 0.12), rgba(79, 127, 58, 0.06));
+      border-left: 5px solid var(--orange);
+      padding: 18px 20px;
+      border-radius: 18px;
+      margin-bottom: 32px;
+      color: var(--green-dark);
+      font-weight: 700;
+    }
+
+    .legal-block {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(79, 127, 58, 0.14);
+    }
+
+    .legal-block:last-child {
+      border-bottom: none;
+    }
+
+    .legal-block h2 {
+      color: var(--green-dark);
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .legal-block p {
+      margin-bottom: 12px;
+    }
+
+    .legal-block ul {
+      margin: 12px 0 14px 22px;
+    }
+
+    .legal-block li {
+      margin-bottom: 6px;
+    }
+
+    .legal-block strong {
+      color: var(--green-dark);
+    }
+
+    .legal-block a {
+      color: var(--orange);
+      font-weight: 900;
+      word-break: break-word;
+    }
+
+    .back-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn.secondary {
+      background: var(--green);
+      box-shadow: 0 12px 25px rgba(79, 127, 58, 0.25);
+    }
+
+    .site-footer {
+      padding: 34px 0;
+      text-align: center;
+      color: var(--green-dark);
+      font-weight: 800;
+    }
+
+    .site-footer img {
+      width: 165px;
+      margin: 0 auto 14px;
+    }
+
+    .small {
+      font-size: 0.92rem;
+      opacity: 0.85;
+    }
+
+    .legal-footer {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+
+    .legal-footer a {
+      color: var(--orange);
+      font-weight: 900;
+    }
+
+    @media (max-width: 980px) {
+      .brand img {
+        width: 165px;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 86px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        background: white;
+        border: 1px solid rgba(79, 127, 58, 0.16);
+        border-radius: 24px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: var(--soft);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 24px, 1100px);
+      }
+
+      .navbar {
+        min-height: 72px;
+      }
+
+      .brand img {
+        width: 142px;
+      }
+
+      .nav-links {
+        top: 76px;
+        left: 12px;
+        right: 12px;
+      }
+
+      .page-hero {
+        padding: 42px 0 30px;
+      }
+
+      h1 {
+        font-size: clamp(2.05rem, 12vw, 3.1rem);
+        line-height: 1.02;
+        letter-spacing: -1px;
+      }
+
+      .legal-section {
+        padding: 24px 0 44px;
+      }
+
+      .legal-card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      .legal-intro {
+        padding: 16px;
+        border-radius: 16px;
+      }
+
+      .legal-block {
+        padding: 20px 0;
+      }
+
+      .legal-block h2 {
+        font-size: 1.25rem;
+      }
+
+      .legal-block p,
+      .legal-block li {
+        font-size: 0.96rem;
+      }
+
+      .back-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 14px 18px;
+      }
+
+      .site-footer img {
+        width: 140px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand" aria-label="Accueil ATKAN CAMP">
+        <img src="8.svg" alt="Logo ATKAN CAMP">
+      </a>
+
+      <nav class="nav-links" id="menu" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="projet-educatif.html">Projet éducatif</a>
+        <a href="projet-associatif.html">Projet associatif</a>
+        <a href="camps.html">Camps</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html" aria-current="page">Mentions légales</a>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="page-hero">
+      <div class="container page-title">
+        <span class="eyebrow">Informations officielles</span>
+        <h1>Mentions légales <span>ATKAN CAMP</span></h1>
+        <p class="lead">
+          Cette page présente les informations légales relatives au site internet de l’association ATKAN CAMP.
+        </p>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <div class="container">
+        <div class="legal-card">
+          <p class="legal-intro">
+            Conformément aux obligations applicables aux sites internet, les présentes mentions légales permettent d’identifier l’éditeur du site, le responsable de publication et l’hébergeur. Les mentions légales doivent être facilement accessibles sur tout site internet.
+          </p>
+
+          <div class="legal-block">
+            <h2>1. Éditeur du site</h2>
+            <p>Le présent site est édité par :</p>
+            <p>
+              <strong>ATKAN CAMP</strong><br>
+              Association régie par la loi du 1er juillet 1901<br>
+              Association déclarée à Angers<br>
+              SIREN : <strong>105 825 525</strong><br>
+              Siège social : <strong>58 boulevard Doyenné, 49100 Angers</strong><br>
+              Adresse e-mail : <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong><br>
+              Téléphone : <strong>06 50 41 71 52</strong>
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>2. Responsable de la publication</h2>
+            <p>Le responsable de la publication est :</p>
+            <p>
+              <strong>Haithem REKIK</strong><br>
+              Président de l’association ATKAN CAMP
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>3. Hébergement du site</h2>
+            <p>Le site est hébergé par :</p>
+            <p>
+              <strong>GitHub Pages</strong><br>
+              GitHub, Inc.<br>
+              88 Colin P. Kelly Jr. Street<br>
+              San Francisco, CA 94107<br>
+              États-Unis
+            </p>
+            <p>Site internet : GitHub Pages</p>
+          </div>
+
+          <div class="legal-block">
+            <h2>4. Objet du site</h2>
+            <p>
+              Le site internet d’ATKAN CAMP a pour objet de présenter l’association, son projet éducatif, son projet associatif, ses camps, ses activités, ses documents d’information, ses formulaires de contact, ses actions et ses modalités de participation.
+            </p>
+            <p>
+              Les informations publiées sur le site sont fournies à titre informatif. Elles peuvent être modifiées, complétées ou actualisées à tout moment par l’association.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>5. Propriété intellectuelle</h2>
+            <p>
+              L’ensemble des contenus présents sur le site, notamment les textes, logos, visuels, documents, éléments graphiques, photographies, vidéos, supports pédagogiques et contenus éditoriaux, sont la propriété d’ATKAN CAMP, sauf mention contraire.
+            </p>
+            <p>
+              Toute reproduction, diffusion, modification, adaptation ou utilisation totale ou partielle des contenus du site sans autorisation préalable écrite de l’association est interdite.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>6. Données personnelles</h2>
+            <p>
+              ATKAN CAMP peut collecter des données personnelles dans le cadre de ses formulaires de contact, de préinscription, d’adhésion, de bénévolat, de partenariat ou de demande d’information.
+            </p>
+            <p>Les données collectées peuvent notamment concerner :</p>
+            <ul>
+              <li>nom et prénom ;</li>
+              <li>adresse e-mail ;</li>
+              <li>numéro de téléphone ;</li>
+              <li>informations relatives au participant ou au mineur concerné ;</li>
+              <li>choix des camps ou activités ;</li>
+              <li>messages transmis à l’association ;</li>
+              <li>autorisations parentales ou informations nécessaires à l’organisation des activités.</li>
+            </ul>
+            <p>
+              Ces données sont utilisées uniquement pour le fonctionnement de l’association, la gestion des demandes, l’organisation des activités, la communication avec les familles, la sécurité des participants et le respect des obligations légales.
+            </p>
+            <p>
+              Les associations sont concernées par le RGPD lorsqu’elles collectent, utilisent ou conservent des données personnelles.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>7. Durée de conservation des données</h2>
+            <p>
+              Les données personnelles sont conservées pendant une durée limitée, proportionnée à leur finalité.
+            </p>
+            <p>
+              À titre indicatif, les données liées aux demandes de contact, préinscriptions ou participations peuvent être conservées pendant une durée maximale de <strong>2 ans</strong>, sauf obligation légale, nécessité administrative, comptable ou demande de suppression formulée par la personne concernée.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>8. Droits des personnes</h2>
+            <p>
+              Conformément à la réglementation applicable en matière de protection des données personnelles, toute personne concernée peut demander l’accès, la rectification, l’effacement ou la limitation du traitement de ses données.
+            </p>
+            <p>
+              Pour exercer ces droits, il est possible de contacter l’association à l’adresse suivante :
+              <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong>.
+            </p>
+            <p>
+              La CNIL rappelle que les personnes concernées doivent être informées de l’identité du responsable de traitement, de l’objectif poursuivi et de leurs droits.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>9. Cookies et traceurs</h2>
+            <p>
+              Le site peut utiliser des cookies ou traceurs nécessaires à son fonctionnement, à la mesure d’audience ou à l’amélioration de l’expérience utilisateur.
+            </p>
+            <p>
+              Lorsque des cookies soumis au consentement sont utilisés, l’utilisateur doit pouvoir les accepter, les refuser ou modifier son choix. La CNIL précise que certains traceurs nécessitent un consentement préalable.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>10. Liens externes</h2>
+            <p>
+              Le site peut contenir des liens vers des sites externes, notamment des formulaires, plateformes partenaires, réseaux sociaux ou services tiers.
+            </p>
+            <p>
+              ATKAN CAMP ne peut être tenue responsable du contenu, du fonctionnement ou de la politique de confidentialité de ces sites externes.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>11. Responsabilité</h2>
+            <p>
+              ATKAN CAMP met tout en œuvre pour assurer l’exactitude et la mise à jour des informations diffusées sur son site.
+            </p>
+            <p>
+              Toutefois, l’association ne peut garantir l’absence totale d’erreurs, d’omissions ou d’indisponibilités temporaires du site.
+            </p>
+            <p>
+              L’utilisateur reste responsable de l’usage qu’il fait des informations disponibles sur le site.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>12. Contact</h2>
+            <p>
+              Pour toute question relative au site, aux mentions légales, aux données personnelles ou aux activités de l’association, il est possible de contacter :
+            </p>
+            <p>
+              <strong>ATKAN CAMP</strong><br>
+              E-mail : <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong><br>
+              Adresse : <strong>58 boulevard Doyenné, 49100 Angers</strong><br>
+              Téléphone : <strong>06 50 41 71 52</strong>
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h2>13. Mise à jour des mentions légales</h2>
+            <p>
+              Les présentes mentions légales peuvent être modifiées à tout moment afin de tenir compte de l’évolution du site, des activités de l’association ou des obligations légales applicables.
+            </p>
+            <p><strong>Dernière mise à jour : 2026</strong></p>
+            <p><strong>ATKAN CAMP © 2026</strong></p>
+          </div>
+
+          <div class="back-actions">
+            <a class="btn secondary" href="index.html">Retour à l’accueil</a>
+            <a class="btn" href="https://forms.gle/UC71tjftpAYNf1gX9" target="_blank" rel="noopener">Je pose ma question</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <img src="8.svg" alt="Logo ATKAN CAMP">
+      <p>ATKAN CAMP — Association éducative.</p>
+      <p class="small">Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
+      <p class="legal-footer">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <span>·</span>
+        <span>ATKAN CAMP © 2026</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const menu = document.querySelector("#menu");
+
+    if (menuButton && menu) {
+      menuButton.addEventListener("click", () => {
+        const isOpen = menu.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        menuButton.textContent = isOpen ? "×" : "☰";
+        document.body.classList.toggle("menu-open", isOpen);
+      });
+
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("is-open");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.textContent = "☰";
+          document.body.classList.remove("menu-open");
+        });
+      });
+    }
+  </script>
+</body>
+</html>

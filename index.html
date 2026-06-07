@@ -40,8 +40,7 @@
       overflow-x: hidden;
     }
 
-    body.menu-open,
-    body.legal-opened {
+    body.menu-open {
       overflow: hidden;
     }
 
@@ -553,104 +552,13 @@
       font-size: 0.9rem;
     }
 
-    .legal-open {
-      background: transparent;
-      border: none;
+    .legal-footer a {
       color: var(--orange);
       font-weight: 900;
-      cursor: pointer;
-      font-size: 0.9rem;
     }
 
-    .legal-open:hover {
+    .legal-footer a:hover {
       text-decoration: underline;
-    }
-
-    .legal-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      display: none;
-    }
-
-    .legal-modal.is-open {
-      display: block;
-    }
-
-    .legal-modal-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(31, 42, 31, 0.62);
-      backdrop-filter: blur(6px);
-    }
-
-    .legal-modal-content {
-      position: relative;
-      z-index: 1;
-      width: min(920px, calc(100% - 32px));
-      max-height: 88vh;
-      margin: 6vh auto;
-      background: white;
-      border-radius: 28px;
-      box-shadow: 0 28px 80px rgba(31, 42, 31, 0.28);
-      overflow: hidden;
-    }
-
-    .legal-close {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 42px;
-      height: 42px;
-      border: none;
-      border-radius: 50%;
-      background: var(--orange);
-      color: white;
-      font-size: 1.6rem;
-      font-weight: 900;
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    .legal-modal-header {
-      padding: 32px 34px 20px;
-      background: linear-gradient(135deg, rgba(79, 127, 58, 0.12), rgba(242, 106, 27, 0.1));
-    }
-
-    .legal-modal-header h2 {
-      color: var(--green-dark);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-
-    .legal-modal-body {
-      max-height: 62vh;
-      overflow-y: auto;
-      padding: 30px 34px 38px;
-    }
-
-    .legal-modal-body h3 {
-      color: var(--green-dark);
-      margin: 24px 0 10px;
-      font-size: 1.2rem;
-    }
-
-    .legal-modal-body p {
-      margin-bottom: 12px;
-    }
-
-    .legal-modal-body ul {
-      margin: 10px 0 16px 22px;
-    }
-
-    .legal-modal-body li {
-      margin-bottom: 6px;
-    }
-
-    .legal-modal-body a {
-      color: var(--orange);
-      font-weight: 900;
     }
 
     @media (max-width: 980px) {
@@ -806,30 +714,6 @@
       .site-footer img {
         width: 140px;
       }
-
-      .legal-modal-content {
-        width: calc(100% - 18px);
-        max-height: 92vh;
-        margin: 4vh auto;
-        border-radius: 22px;
-      }
-
-      .legal-modal-header {
-        padding: 26px 22px 18px;
-      }
-
-      .legal-modal-body {
-        max-height: 68vh;
-        padding: 22px;
-        font-size: 0.94rem;
-      }
-
-      .legal-close {
-        top: 12px;
-        right: 12px;
-        width: 38px;
-        height: 38px;
-      }
     }
   </style>
 </head>
@@ -850,6 +734,8 @@
         <a href="camps.html">Camps</a>
         <a href="#faq">FAQ</a>
         <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
       </nav>
 
       <div class="header-actions">
@@ -932,14 +818,19 @@
         <div class="section-title">
           <h2>Deux documents cadres pour <span>une association structurée</span>.</h2>
           <p>
-            L’association et ses dirigeants portent une vision claire, structurée et professionnelle, en valorisant le projet éducatif, le projet associatif et les engagements pris auprès des familles, des partenaires et des financeurs.
+            L’association et ses dirigeants portent une vision claire, structurée et professionnelle,
+            en valorisant le projet éducatif, le projet associatif et les engagements pris auprès des familles,
+            des partenaires et des financeurs.
           </p>
         </div>
 
         <div class="grid-2">
           <article class="card">
             <h3>Un cadre éducatif clair</h3>
-            <p>Le projet éducatif fixe le cadre des actions : valeurs, objectifs, principes pédagogiques, accueil des mineurs, sécurité, relation aux familles et évaluation.</p>
+            <p>
+              Le projet éducatif fixe le cadre des actions : valeurs, objectifs, principes pédagogiques,
+              accueil des mineurs, sécurité, relation aux familles et évaluation.
+            </p>
             <div class="actions">
               <a class="btn secondary" href="projet-educatif.html">Lire la page</a>
             </div>
@@ -947,7 +838,10 @@
 
           <article class="card">
             <h3>Une vision associative solide</h3>
-            <p>Le projet associatif présente la vision, la mission, les cinq piliers, l’impact attendu, les partenariats recherchés et l’évolution de l’association.</p>
+            <p>
+              Le projet associatif présente la vision, la mission, les cinq piliers, l’impact attendu,
+              les partenariats recherchés et l’évolution de l’association.
+            </p>
             <div class="actions">
               <a class="btn secondary" href="projet-associatif.html">Lire la page</a>
             </div>
@@ -960,7 +854,10 @@
       <div class="container">
         <div class="section-title">
           <h2>La méthode ATKAN CAMP : <span>comprendre, pratiquer, progresser</span>.</h2>
-          <p>Simple à comprendre, sérieuse à appliquer. Pas du remplissage de vacances : un vrai parcours avec une progression visible.</p>
+          <p>
+            Simple à comprendre, sérieuse à appliquer. Pas du remplissage de vacances :
+            un vrai parcours avec une progression visible.
+          </p>
         </div>
 
         <div class="method-band">
@@ -988,7 +885,8 @@
           <span class="eyebrow">FAQ officielle</span>
           <h2>CAMP LANGUES : <span>10 réponses essentielles pour les familles</span>.</h2>
           <p>
-            Une FAQ volontairement courte pour comprendre l’essentiel. Pour toute autre question, un formulaire libre est disponible.
+            Une FAQ volontairement courte pour comprendre l’essentiel.
+            Pour toute autre question, un formulaire libre est disponible.
           </p>
         </div>
 
@@ -1097,7 +995,10 @@
         <div class="faq-cta">
           <div>
             <h3>Une question avant l’inscription ?</h3>
-            <p>ATKAN CAMP reste disponible pour échanger avec les familles, présenter les groupes, expliquer la méthode et accompagner chaque inscription avec clarté.</p>
+            <p>
+              ATKAN CAMP reste disponible pour échanger avec les familles, présenter les groupes,
+              expliquer la méthode et accompagner chaque inscription avec clarté.
+            </p>
           </div>
 
           <div class="cta-actions">
@@ -1117,7 +1018,10 @@
         <div class="cta">
           <div class="cta-content">
             <h2>Parents, bénévoles, partenaires : <span>construisons le lien</span>.</h2>
-            <p>Une question sur les camps, les inscriptions, les partenariats ou le développement à Angers et au-delà ? Le formulaire est là.</p>
+            <p>
+              Une question sur les camps, les inscriptions, les partenariats ou le développement à Angers et au-delà ?
+              Le formulaire est là.
+            </p>
           </div>
 
           <div class="cta-actions">
@@ -1139,114 +1043,14 @@
       <p>ATKAN CAMP — Association éducative.</p>
       <p class="small">Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
       <p class="legal-footer">
-        <button class="legal-open" type="button" onclick="openLegalModal()">Mentions légales</button>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <span>·</span>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
         <span>·</span>
         <span>ATKAN CAMP © 2026</span>
       </p>
     </div>
   </footer>
-
-  <div class="legal-modal" id="legalModal" aria-hidden="true">
-    <div class="legal-modal-overlay" onclick="closeLegalModal()"></div>
-
-    <div class="legal-modal-content" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
-      <button class="legal-close" type="button" onclick="closeLegalModal()" aria-label="Fermer les mentions légales">×</button>
-
-      <div class="legal-modal-header">
-        <span class="eyebrow">Informations officielles</span>
-        <h2 id="legalTitle">Mentions légales <span>ATKAN CAMP</span></h2>
-        <p>ATKAN CAMP © 2026</p>
-      </div>
-
-      <div class="legal-modal-body">
-        <h3>1. Éditeur du site</h3>
-        <p>
-          <strong>ATKAN CAMP</strong><br>
-          Association régie par la loi du 1er juillet 1901<br>
-          SIREN : <strong>105 825 525</strong><br>
-          Siège social : <strong>58 boulevard Doyenné, 49100 Angers</strong><br>
-          Adresse e-mail : <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong><br>
-          Téléphone : <strong>06 50 41 71 52</strong>
-        </p>
-
-        <h3>2. Responsable de la publication</h3>
-        <p><strong>Haithem REKIK</strong><br>Président de l’association ATKAN CAMP</p>
-
-        <h3>3. Hébergement du site</h3>
-        <p>
-          <strong>GitHub Pages</strong><br>
-          GitHub, Inc.<br>
-          88 Colin P. Kelly Jr. Street<br>
-          San Francisco, CA 94107<br>
-          États-Unis
-        </p>
-
-        <h3>4. Objet du site</h3>
-        <p>
-          Le site internet d’ATKAN CAMP a pour objet de présenter l’association, son projet éducatif,
-          son projet associatif, ses camps, ses activités, ses documents d’information, ses formulaires
-          de contact, ses actions et ses modalités de participation.
-        </p>
-
-        <h3>5. Propriété intellectuelle</h3>
-        <p>
-          L’ensemble des contenus présents sur le site, notamment les textes, logos, visuels, documents,
-          éléments graphiques, photographies, vidéos, supports pédagogiques et contenus éditoriaux,
-          sont la propriété d’ATKAN CAMP, sauf mention contraire.
-        </p>
-
-        <h3>6. Données personnelles</h3>
-        <p>
-          ATKAN CAMP peut collecter des données personnelles dans le cadre de ses formulaires de contact,
-          de préinscription, d’adhésion, de bénévolat, de partenariat ou de demande d’information.
-        </p>
-        <ul>
-          <li>nom et prénom ;</li>
-          <li>adresse e-mail ;</li>
-          <li>numéro de téléphone ;</li>
-          <li>informations relatives au participant ou au mineur concerné ;</li>
-          <li>choix des camps ou activités ;</li>
-          <li>messages transmis à l’association ;</li>
-          <li>autorisations parentales ou informations nécessaires à l’organisation des activités.</li>
-        </ul>
-
-        <h3>7. Durée de conservation des données</h3>
-        <p>
-          Les données personnelles sont conservées pendant une durée limitée, proportionnée à leur finalité.
-          À titre indicatif, les données liées aux demandes de contact, préinscriptions ou participations
-          peuvent être conservées pendant une durée maximale de <strong>2 ans</strong>.
-        </p>
-
-        <h3>8. Droits des personnes</h3>
-        <p>
-          Toute personne concernée peut demander l’accès, la rectification, l’effacement ou la limitation
-          du traitement de ses données en contactant :
-          <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong>.
-        </p>
-
-        <h3>9. Cookies et traceurs</h3>
-        <p>Le site peut utiliser des cookies ou traceurs nécessaires à son fonctionnement, à la mesure d’audience ou à l’amélioration de l’expérience utilisateur.</p>
-
-        <h3>10. Liens externes</h3>
-        <p>Le site peut contenir des liens vers des sites externes. ATKAN CAMP ne peut être tenue responsable du contenu ou de la politique de confidentialité de ces sites externes.</p>
-
-        <h3>11. Responsabilité</h3>
-        <p>ATKAN CAMP met tout en œuvre pour assurer l’exactitude et la mise à jour des informations diffusées sur son site.</p>
-
-        <h3>12. Contact</h3>
-        <p>
-          <strong>ATKAN CAMP</strong><br>
-          E-mail : <strong><a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a></strong><br>
-          Adresse : <strong>58 boulevard Doyenné, 49100 Angers</strong><br>
-          Téléphone : <strong>06 50 41 71 52</strong>
-        </p>
-
-        <h3>13. Mise à jour des mentions légales</h3>
-        <p><strong>Dernière mise à jour : 2026</strong></p>
-        <p><strong>ATKAN CAMP © 2026</strong></p>
-      </div>
-    </div>
-  </div>
 
   <script>
     const menuButton = document.querySelector(".menu-toggle");
@@ -1269,26 +1073,6 @@
         });
       });
     }
-
-    function openLegalModal() {
-      const modal = document.getElementById("legalModal");
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("legal-opened");
-    }
-
-    function closeLegalModal() {
-      const modal = document.getElementById("legalModal");
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("legal-opened");
-    }
-
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        closeLegalModal();
-      }
-    });
   </script>
 </body>
 </html>
