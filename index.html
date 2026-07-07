@@ -584,38 +584,227 @@
     }
 
     .site-footer {
-      padding: 34px 0;
-      text-align: center;
+      background: linear-gradient(135deg, var(--green-dark), #173f20);
+      color: var(--white);
+      padding: 58px 0 24px;
+      text-align: left;
+      font-weight: 400;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr 1fr 1.2fr;
+      gap: 44px;
+      align-items: start;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .footer-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .site-footer .footer-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 18px;
+      background: var(--white);
+      padding: 7px;
+      margin: 0;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    }
+
+    .footer-brand h3 {
+      color: var(--white);
+      font-size: 1.18rem;
+      font-weight: 900;
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    .footer-subtitle {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.9rem;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    .footer-description,
+    .footer-donation-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 370px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      transition: 0.25s ease;
+      font-weight: 700;
+    }
+
+    .footer-col a:hover {
+      color: var(--orange);
+    }
+
+    .footer-contact {
+      display: grid;
+      gap: 13px;
+    }
+
+    .footer-contact p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .footer-contact span {
+      display: block;
+      color: var(--orange);
+      font-size: 0.82rem;
+      font-weight: 900;
+      margin-bottom: 3px;
+    }
+
+    .footer-donation {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.16);
+    }
+
+    .donation-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 18px;
+      min-height: 48px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: var(--white);
+      font-weight: 900;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 12px 25px rgba(242, 106, 27, 0.32);
+      transition: 0.25s ease;
+    }
+
+    .donation-btn:hover {
+      background: #d95712;
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(242, 106, 27, 0.4);
+    }
+
+    .iban-card {
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 18px;
+      background: rgba(250, 247, 239, 0.12);
+      border: 1px solid rgba(250, 247, 239, 0.18);
+    }
+
+    .iban-label {
+      display: block;
+      color: var(--white);
+      font-size: 0.84rem;
+      font-weight: 900;
+      margin-bottom: 9px;
+    }
+
+    .iban-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .iban-box code {
+      flex: 1;
+      min-width: 210px;
+      color: var(--white);
+      font-size: 0.82rem;
+      letter-spacing: 0.35px;
+      line-height: 1.45;
+      background: rgba(0, 0, 0, 0.24);
+      padding: 9px 10px;
+      border-radius: 11px;
+      word-break: break-word;
+    }
+
+    .copy-iban {
+      border: none;
+      background: var(--white);
       color: var(--green-dark);
+      padding: 9px 13px;
+      border-radius: 11px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .copy-iban:hover {
+      background: var(--soft);
+      color: var(--green-dark);
+    }
+
+    .iban-note {
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .footer-bottom {
+      margin-top: 46px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-legal a {
+      color: var(--white);
+      text-decoration: none;
       font-weight: 800;
     }
 
-    .site-footer img {
-      width: 165px;
-      margin: 0 auto 14px;
-    }
-
-    .small {
-      font-size: 0.92rem;
-      opacity: 0.85;
-    }
-
-    .legal-footer {
-      margin-top: 14px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      font-size: 0.9rem;
-    }
-
-    .legal-footer a {
+    .footer-legal a:hover {
       color: var(--orange);
-      font-weight: 900;
-    }
-
-    .legal-footer a:hover {
-      text-decoration: underline;
     }
 
     @media (max-width: 1160px) {
@@ -855,6 +1044,56 @@
 
       .site-footer img {
         width: 140px;
+      }
+    }
+
+
+    @media (max-width: 980px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .site-footer {
+        padding: 42px 0 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .site-footer .footer-logo {
+        width: 56px;
+        height: 56px;
+      }
+
+      .footer-donation {
+        padding: 20px;
+      }
+
+      .donation-btn {
+        width: 100%;
+      }
+
+      .iban-box {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .iban-box code {
+        min-width: 0;
+      }
+
+      .copy-iban {
+        width: 100%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -1188,17 +1427,96 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <img src="10.svg" alt="Logo ATKAN CAMP">
-      <p>ATKAN CAMP — Association éducative.</p>
-      <p class="small">Apprendre autrement, grandir concrètement, repartir avec confiance.</p>
-      <p class="legal-footer">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo-row">
+          <img src="10.svg" alt="Logo ATKAN CAMP" class="footer-logo">
+
+          <div>
+            <h3>ATKAN CAMP</h3>
+            <p class="footer-subtitle">Association éducative</p>
+          </div>
+        </div>
+
+        <p class="footer-description">
+          ATKAN CAMP accompagne les enfants, les jeunes et les familles à travers des camps éducatifs,
+          des ateliers de langues, des projets pédagogiques et des parcours de progression.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projet-educatif.html">Projet éducatif</a></li>
+          <li><a href="projet-associatif.html">Projet associatif</a></li>
+          <li><a href="camps.html">Camps</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+
+        <div class="footer-contact">
+          <p>
+            <span>Adresse</span>
+            Angers, France
+          </p>
+
+          <p>
+            <span>Email</span>
+            <a href="mailto:atkancamp@gmail.com">atkancamp@gmail.com</a>
+          </p>
+
+          <p>
+            <span>Information</span>
+            <a href="https://forms.gle/nPrbksHGQhSJZZHL8" target="_blank" rel="noopener">
+              Formulaire de contact
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-col footer-donation">
+        <h4>Soutenir ATKAN CAMP</h4>
+
+        <p class="footer-donation-text">
+          Chaque don permet de financer du matériel pédagogique, des supports d’apprentissage
+          et des actions accessibles aux familles.
+        </p>
+
+        <a class="donation-btn" href="#don-atkan" aria-label="Faire un don à ATKAN CAMP">
+          Faire un don
+        </a>
+
+        <div class="iban-card" id="don-atkan">
+          <span class="iban-label">IBAN pour virement</span>
+
+          <div class="iban-box">
+            <code id="iban-value">FR76 1027 8394 0400 0221 7260 170</code>
+
+            <button class="copy-iban" type="button" onclick="copyIban()">
+              Copier
+            </button>
+          </div>
+
+          <p class="iban-note">
+            Titulaire du compte : ATKAN CAMP
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 ATKAN CAMP — Tous droits réservés</p>
+
+      <div class="footer-legal">
         <a href="mentions-legales.html">Mentions légales</a>
         <span>·</span>
         <a href="politique-confidentialite.html">Politique de confidentialité</a>
-        <span>·</span>
-        <span>ATKAN CAMP © 2026</span>
-      </p>
+      </div>
     </div>
   </footer>
 
@@ -1222,6 +1540,34 @@
           document.body.classList.remove("menu-open");
         });
       });
+    }
+
+    function copyIban() {
+      const iban = "FR7610278394040002217260170";
+      const button = document.querySelector(".copy-iban");
+
+      if (!button) return;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(iban).then(() => {
+          button.textContent = "Copié";
+          setTimeout(() => {
+            button.textContent = "Copier";
+          }, 1800);
+        });
+      } else {
+        const input = document.createElement("input");
+        input.value = iban;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        document.body.removeChild(input);
+
+        button.textContent = "Copié";
+        setTimeout(() => {
+          button.textContent = "Copier";
+        }, 1800);
+      }
     }
   </script>
 </body>
